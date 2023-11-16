@@ -17,6 +17,8 @@ public class Main {
 
         //ReadFromConsole.getReadWrite();
 
+        Exercice.exo2_2();
+
         //Exercice.exo2_3();
 
         //Exercice.exo2_4();
@@ -25,7 +27,7 @@ public class Main {
 
         //Exercice.exo3_2();
 
-        Exercice.exo3_3();
+        //Exercice.exo3_3();
 
 
         }

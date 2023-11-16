@@ -6,6 +6,13 @@ public class Exercice {
 
     static Scanner scanner = new Scanner(System.in);
 
+    public static void exo2_2() {
+        System.out.println("indiquer un nombre ?");
+        int nmbre = scanner.nextInt();
+
+        System.out.println( nmbre +  " * " + nmbre + " = " + nmbre * nmbre);
+    }
+
     public static void exo2_3() {
 
         System.out.println("Quel est votre prénom ?");
@@ -82,7 +89,7 @@ public class Exercice {
             resultat= "sont";
         }
 
-        System.out.println("Les noms " + resultat + " dans l'ordre alpahbétique");
+        System.out.println("Les noms " + resultat + " dans l'ordre alphabétique");
 
     }
 
