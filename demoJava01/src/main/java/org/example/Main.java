@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.exercice.Exercice;
+import org.example.exercice.ExoConditionsStructurelles;
 import org.example.operator.Operator;
 import org.example.readFromConsole.ReadFromConsole;
 import org.example.structure.Structure2;
@@ -30,9 +31,11 @@ public class Main {
 
         //Exercice.exo3_3();
 
-        Structure2.getBouclFor();
+       // Structure2.getBouclFor();
 
-        Structure2.getBreakContinue();
+        //Structure2.getBreakContinue();
+
+        ExoConditionsStructurelles.exo5_11();
 
         }
 
