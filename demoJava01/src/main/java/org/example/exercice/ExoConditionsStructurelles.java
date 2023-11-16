@@ -8,6 +8,8 @@ public class ExoConditionsStructurelles {
 
     public static void exo5_1() {
 
+        System.out.println("\n\n #### exercice 5.1");
+
         int nbre = 0;
         long nbreATrouver = Math.round(Math.random()*2) +1;
 
@@ -20,10 +22,13 @@ public class ExoConditionsStructurelles {
         }
 
         System.out.println("Gagné !");
-        scanner.close();
+
     }
 
     public static void exo5_2() {
+
+        System.out.println("\n\n #### exercice 5.2");
+
         int nbre = 0;
         long nbreATrouver = Math.round(Math.random()*10) + 10;
 
@@ -39,11 +44,13 @@ public class ExoConditionsStructurelles {
         }
 
         System.out.println("Gagné !");
-        scanner.close();
+
 
     }
 
     public static void exo5_3() {
+
+        System.out.println("\n\n #### exercice 5.3");
 
         int nbre;
         String liste = "";
@@ -54,10 +61,12 @@ public class ExoConditionsStructurelles {
             liste += i.toString() + " ";
         }
         System.out.println(liste);
-        scanner.close();
+
    }
 
     public static void exo5_4() {
+
+        System.out.println("\n\n #### exercice 5.4");
 
         int nbre;
         int i;
@@ -69,12 +78,12 @@ public class ExoConditionsStructurelles {
             System.out.println(++i);
         }
 
-        scanner.close();
-
     }
 
 
     public static void exo5_5() {
+
+        System.out.println("\n\n #### exercice 5.5");
 
         int nbre;
 
@@ -82,13 +91,14 @@ public class ExoConditionsStructurelles {
         nbre = scanner.nextInt();
 
         for (int i = 1 ; i <= 10 ; i++) {
-            System.out.println( nbre + " x " + i + " = " + i*nbre);
+            System.out.println( nbre + " x " + i + " = " + i * nbre);
         }
 
-        scanner.close();
     }
 
     public static void exo5_6() {
+
+        System.out.println("\n\n #### exercice 5.6");
 
         int nbre;
         int somme = 0;
@@ -98,11 +108,13 @@ public class ExoConditionsStructurelles {
         for (int i = 1 ; i <= nbre ; i++ ) {
             somme+=i;
         }
-        System.out.println("somme des entier de 1 à "+ nbre + " = " + somme);
-        scanner.close();
+        System.out.println("somme des entiers de 1 à "+ nbre + " = " + somme);
+
     }
 
     public static void exo5_7() {
+
+        System.out.println("\n\n #### exercice 5.7");
 
         int nbre;
         int max = 0;
@@ -117,11 +129,12 @@ public class ExoConditionsStructurelles {
         }
 
         System.out.println("Le plus grand de css nombres était " + max);
-        scanner.close();
 
     }
 
     public static void exo5_7_2() {
+
+        System.out.println("\n\n #### exercice 5.7.2");
 
         int nbre;
         int max = 0;
@@ -141,40 +154,44 @@ public class ExoConditionsStructurelles {
 
         System.out.println("Le plus grand de ces nombres était " + max );
         System.out.println("C'était le numéro " + indice );
-        scanner.close();
 
     }
 
     public static void exo5_8() {
+
+        System.out.println("\n\n #### exercice 5.8");
 
         int nbre;
         long factorielle = 1L;
         System.out.println("saisir un nombre");
         nbre = scanner.nextInt();
 
-        for (int i = 1 ; i <= nbre ; i++ ) {
-            factorielle*=i;
+        if (nbre == 0) {
+            System.out.println("0! = 1");
+        } else {
+            for (int i = 1 ; i <= nbre ; i++ ) {
+                factorielle *= i;
+            }
+            System.out.println( nbre + "! = " + factorielle);
         }
-        System.out.println( nbre + "! = " + factorielle);
-        scanner.close();
-
-
     }
 
     public static void exo5_9() {
+
+        System.out.println("\n\n #### exercice 5.9");
 
         int nbre ;
         int max = 0;
         int indice = 1;
         int cmpt = 1;
 
-        System.out.println("Entrer le nombre 1 : ");
+        System.out.println("Entrer le nombre 1 (0 pour arrêter) : ");
         max = scanner.nextInt();
         nbre = max;
 
         while ( nbre != 0 ) {
             cmpt++ ;
-            System.out.println("Entrer le nombre "+ cmpt + " : ") ;
+            System.out.println("Entrer le nombre "+ cmpt + "  (0 pour arrêter) : ") ;
             nbre = scanner.nextInt() ;
             if (max < nbre)  {
                 max = nbre;
@@ -184,19 +201,20 @@ public class ExoConditionsStructurelles {
 
         System.out.println("Le plus grand de ces nombres était " + max );
         System.out.println("C'était le numéro " + indice );
-        scanner.close();
 
     }
 
     public static void exo5_10() {
 
+        System.out.println("\n\n #### exercice 5.10");
+
         int prix = -1 ;
         int somme = 0 ;
         int paiement = 0 ;
-        int diff;
-        int nbBillet10=0;
-        int nbBillet5=0;
-        int nbBillet1=0;
+        int diff ;
+        int nbBillet10 = 0 ;
+        int nbBillet5 = 0 ;
+        int nbBillet1 = 0 ;
 
 
         while ( prix != 0 ) {
@@ -214,7 +232,7 @@ public class ExoConditionsStructurelles {
         System.out.println("\nTotal à payer :" + somme + "€");
 
         while (paiement < somme ) {
-            System.out.println("\nVous payer combien :") ;
+            System.out.println("\nVous payez combien :") ;
             paiement = scanner.nextInt() ;
             if (paiement<somme) {
                 System.out.println(" >>>> paiement insuffisant ! \n") ;
@@ -256,11 +274,12 @@ public class ExoConditionsStructurelles {
             System.out.println(" pièce de 1€ à rendre : " + nbBillet1 );
         }
 
-        scanner.close();
-
     }
 
     public static void exo5_11() {
+
+        System.out.println("\n\n #### exercice 5.11");
+
         int somme = 0;
         int compteur = 0;
 
@@ -269,10 +288,7 @@ public class ExoConditionsStructurelles {
             somme += compteur;
         }
 
-        System.out.println(" la somme des nombre de 1 à " + compteur + " = " + somme );
-
-
-        scanner.close();
+        System.out.println(" la somme des nombres de 1 à " + compteur + " = " + somme );
 
 
 }
