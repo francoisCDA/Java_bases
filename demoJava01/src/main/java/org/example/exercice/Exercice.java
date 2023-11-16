@@ -11,6 +11,8 @@ public class Exercice {
         int nmbre = scanner.nextInt();
 
         System.out.println( nmbre +  " * " + nmbre + " = " + nmbre * nmbre);
+
+        scanner.close();
     }
 
     public static void exo2_3() {
@@ -21,6 +23,7 @@ public class Exercice {
 
         System.out.println("Bonjour "+ prenom);
 
+        scanner.close();
     }
 
     public static void exo2_4() {
@@ -37,6 +40,8 @@ public class Exercice {
         float total = prixHT * nmbre * (1 + TVA / 100);
 
         System.out.println("le total est de " + total + "€ TTC");
+
+        scanner.close();
     }
 
     public static void exo3_1() {
@@ -52,6 +57,8 @@ public class Exercice {
         }
 
         System.out.println("Le nombre saisi est "+ retour);
+
+        scanner.close();
     }
 
     public static void exo3_2() {
@@ -64,12 +71,14 @@ public class Exercice {
 
         String retour = "positif";
 
-        if ( (nbre1 < 0 && nbre2 > 0) || (nbre1 > 0 && nbre2 < 0)  ) {
+        //if ( (nbre1 < 0 && nbre2 > 0) || (nbre1 > 0 && nbre2 < 0)  ) {
+        if (nbre1 < 0 ^ nbre2 < 0)  {
             retour = "negatif";
         }
 
         System.out.println("Le produit des nombres saisis sera "+ retour);
 
+        scanner.close();
     }
 
     public static void exo3_3() {
@@ -91,6 +100,7 @@ public class Exercice {
 
         System.out.println("Les noms " + resultat + " dans l'ordre alphabétique");
 
+        scanner.close();
     }
 
 }
