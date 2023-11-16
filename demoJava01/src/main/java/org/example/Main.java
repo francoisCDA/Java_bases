@@ -34,18 +34,18 @@ public class Main {
        // Structure2.getBouclFor();
 
         //Structure2.getBreakContinue();
-        ExoConditionsStructurelles.exo5_1();
-        ExoConditionsStructurelles.exo5_2();
-        ExoConditionsStructurelles.exo5_3();
-        ExoConditionsStructurelles.exo5_4();
-        ExoConditionsStructurelles.exo5_5();
-        ExoConditionsStructurelles.exo5_6();
-        ExoConditionsStructurelles.exo5_7();
-        ExoConditionsStructurelles.exo5_7_2();
-        ExoConditionsStructurelles.exo5_8();
-        ExoConditionsStructurelles.exo5_9();
-        ExoConditionsStructurelles.exo5_10();
-        ExoConditionsStructurelles.exo5_11();
+        //ExoConditionsStructurelles.exo5_1();
+        //ExoConditionsStructurelles.exo5_2();
+        //ExoConditionsStructurelles.exo5_3();
+        //ExoConditionsStructurelles.exo5_4();
+        //ExoConditionsStructurelles.exo5_5();
+        //ExoConditionsStructurelles.exo5_6();
+        //ExoConditionsStructurelles.exo5_7();
+        //ExoConditionsStructurelles.exo5_7_2();
+        //ExoConditionsStructurelles.exo5_8();
+        //ExoConditionsStructurelles.exo5_9();
+        //ExoConditionsStructurelles.exo5_10();
+        //ExoConditionsStructurelles.exo5_11();
 
         }
 

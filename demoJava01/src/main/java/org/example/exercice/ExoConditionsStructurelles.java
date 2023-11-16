@@ -106,7 +106,7 @@ public class ExoConditionsStructurelles {
         nbre = scanner.nextInt();
 
         for (int i = 1 ; i <= nbre ; i++ ) {
-            somme+=i;
+            somme += i;
         }
         System.out.println("somme des entiers de 1 à "+ nbre + " = " + somme);
 
