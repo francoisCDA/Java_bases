@@ -68,13 +68,13 @@ public class Exercice {
     public static void exo3_3() {
 
         System.out.println("Indiquer un premier nom ?");
-        String nom1 = scanner.next();
+        String nom1 = scanner.next().toLowerCase();
 
         System.out.println("Indiquer un deuxième nom ?");
-        String nom2 = scanner.next();
+        String nom2 = scanner.next().toLowerCase();
 
         System.out.println("Indiquer un troisième nom ?");
-        String nom3 = scanner.next();
+        String nom3 = scanner.next().toLowerCase();
 
         String resultat = "ne sont pas";
 
