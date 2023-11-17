@@ -162,6 +162,8 @@ public class SerieA {
         }
 
         System.out.println("le plus grand nombre généné est : " + max);
+
+        scanner.close();
     }
 
 
