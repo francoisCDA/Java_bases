@@ -77,7 +77,40 @@ public class SerieC {
         printTab(monTab);
     }
 
+    public static void getExo5_7_bis(int[] monTab) {
+        System.out.println("exo 5.7");
 
+        int tmp ;
+        boolean pasfini = true;
+        int idxStart = 0;
+        int idxEnd = monTab.length - 1;
+
+        while (pasfini) {
+
+            pasfini = false;
+
+            int first = -1 ;
+            int last = idxEnd ;
+
+            for (int i = idxStart ; i < idxEnd ; i++ ) {
+
+                if (monTab[i] > monTab[i+1] ) {
+                    pasfini = true;
+                    tmp = monTab[i+1];
+                    monTab[i+1] = monTab[i];
+                    monTab[i]=tmp;
+
+                    if ( first == -1 ) { first = i; }
+                    last = i+1 ;
+                }
+
+            }
+            idxStart = first -1;
+            idxEnd = last;
+
+        }
+        printTab(monTab);
+    }
 
 
     public static void getExo5_8(int[] monTabA, int[]monTabB) {

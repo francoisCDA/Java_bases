@@ -10,7 +10,7 @@ public class Main {
 
         //SerieA.getExo5_bis();
 
-        int[] tableau = {1,77,2,3,4,9,65,4,1,5,2};
+        int[] tableau = {1,77,2,3,100,4,9,65,4,1,2,52,5,10,23,2};
         int[] tableauB = {1,1,2,3,4,9};
 
        // SerieB.getExo5_1(tableau,2);
@@ -18,6 +18,7 @@ public class Main {
        // SerieB.getExo5_3(tableau);
        // SerieB.getExo5_4(tableau);
 
+        SerieC.getExo5_7_bis(tableau);
        // SerieC.getExo5_8(tableau, tableau);
 
     }
