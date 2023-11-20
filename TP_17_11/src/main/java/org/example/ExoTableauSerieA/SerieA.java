@@ -60,8 +60,6 @@ public class SerieA {
             if (monTab[i] == saisie ) {
                 retour = " est bien dans la liste";
                 break;
-            } else {
-
             }
         }
 
@@ -129,6 +127,7 @@ public class SerieA {
         long[] monTabA;
         long[] monTabB;
         int taille;
+        int somme = 0;
 
         System.out.println("quelle doit être la taille des tableaux ?");
         taille = scanner.nextInt();
@@ -136,13 +135,14 @@ public class SerieA {
         monTabA = new long[taille];
         monTabB = new long[taille];
 
+
         for ( int i = 0 ; i < taille ; i ++ ) {
             monTabA[i] = Math.round(Math.random()*99) + 1 ;
             monTabB[i] = Math.round(Math.random()*99) + 1 ;
-
+            somme += monTabA[i]+monTabB[i];
             System.out.println( monTabA[i] + " + " + monTabB[i] + " = " + (monTabA[i] + monTabB[i]) );
         }
-
+        System.out.println("la somme totale des 2 tableaux = " + somme);
     }
 
 

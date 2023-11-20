@@ -14,11 +14,11 @@ public class SerieB {
             }
         }
 
-        System.out.println("le talbeau contient " + cmpt + " occurenece de " + val);
+        System.out.println("le talbeau contient " + cmpt + " occurrences de " + val);
 
     }
 
-    public static void getExo5_1(int[] monTab) {
+    public static void getExo5_2(int[] monTab) {
         System.out.println("exo 5.2");
 
         boolean croissant = true ;
@@ -57,16 +57,17 @@ public class SerieB {
 
     public static void getExo5_4(int[] monTab) {
 
-        System.out.println("exo 5.3");
+        System.out.println("exo 5.4");
 
         for ( int i = 0 ; i < monTab.length ; i ++ ) {
             System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
         }
+
         System.out.println("\n########\n");
 
         int tmp = monTab[monTab.length - 1];
 
-        for (int i = monTab.length - 1; i > 1; i--) {
+        for (int i = monTab.length - 1 ; i > 0 ; i-- ) {
             monTab[i] = monTab[i - 1];
         }
 
