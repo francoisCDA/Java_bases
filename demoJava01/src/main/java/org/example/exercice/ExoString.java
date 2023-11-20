@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ExoString {
 
     public static void getExo1(String txt ) {
+        System.out.printf("\n\n exo 1");
 
         System.out.printf("\nExercice %s","1");
 
@@ -14,7 +15,7 @@ public class ExoString {
     }
 
     public static void getExo2(String mot, char lettre) {
-        System.out.printf("\n\n exo 1");
+        System.out.printf("\n\n exo 2");
         int cmpt = 0;
 
         for (int i = 0 ; i < mot.length() ; i++ ) {
@@ -28,7 +29,7 @@ public class ExoString {
 
 
     public static int getCharInString(String mot, char lettre) {
-        System.out.printf("\n\n exo 2");
+
         int cmpt = 0;
 
         for (int i = 0 ; i < mot.length() ; i++ ) {
@@ -119,8 +120,6 @@ public class ExoString {
             }
             System.out.printf("\n");
         }
-
     }
-
 
 }
