@@ -66,6 +66,7 @@ public class Main {
         ExoString.getExo4("radar");
         ExoString.getExo4("salut");
 
+        ExoString.getExo5();
         }
 
 }

@@ -1,5 +1,7 @@
 package org.example.exercice;
 
+import java.util.Scanner;
+
 public class ExoString {
 
     public static void getExo1(String txt ) {
@@ -12,7 +14,7 @@ public class ExoString {
     }
 
     public static void getExo2(String mot, char lettre) {
-
+        System.out.printf("\n\n exo 1");
         int cmpt = 0;
 
         for (int i = 0 ; i < mot.length() ; i++ ) {
@@ -26,7 +28,7 @@ public class ExoString {
 
 
     public static int getCharInString(String mot, char lettre) {
-
+        System.out.printf("\n\n exo 2");
         int cmpt = 0;
 
         for (int i = 0 ; i < mot.length() ; i++ ) {
@@ -39,7 +41,7 @@ public class ExoString {
     }
 
     public static void getExo3(String mot1 , String mot2 ) {
-
+        System.out.printf("\n\n exo 3");
         String tableMot1 = mot1.toLowerCase();
         String tableMot2 = mot2.toLowerCase();
 
@@ -78,6 +80,7 @@ public class ExoString {
     }
 
     public static void getExo4(String mot ) {
+        System.out.printf("\n\n exo 4");
 
         boolean palindrome = true;
 
@@ -90,11 +93,34 @@ public class ExoString {
         if (palindrome) {
             System.out.printf("\n %s est un palindrome", mot);
         } else {
-            System.out.printf("\n n'est pas un palindrome", mot);
+            System.out.printf("\n %s n'est pas un palindrome", mot);
         }
 
     }
 
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void getExo5() {
+        System.out.printf("\n\n exo 5");
+        int hauteur;
+
+        System.out.println("\nQuelle doit être la hauteur de la pyramide ?");
+        hauteur = scanner.nextInt();
+
+        for (int i = 1 ; i < hauteur ; i++ ) {
+            for (int j = 0 ; j < i ; j++) {
+                System.out.printf("*");
+            }
+            System.out.printf("\n");
+        }
+        for (int i = hauteur ; i > 0 ; i-- ) {
+            for (int j = 0 ; j < i ; j++) {
+                System.out.printf("*");
+            }
+            System.out.printf("\n");
+        }
+
+    }
 
 
 }
