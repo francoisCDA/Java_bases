@@ -2,6 +2,8 @@ package org.example.ExoTableauSerieB;
 
 import org.example.ExoTableauSerieC.SerieC;
 
+import java.util.Arrays;
+
 public class SerieB {
 
     public static void getExo5_1(int[] monTab,int val) {
@@ -29,6 +31,7 @@ public class SerieB {
 
             if (monTab[i-1] > monTab[i]) {
                 croissant = false;
+                break;
             }
         }
 
@@ -74,6 +77,23 @@ public class SerieB {
         monTab[0] = tmp;
 
         SerieC.printTab(monTab);
+    }
+
+    public static void getExo5_4_bis(int[] monTab) {
+
+        int[] tabOut = Arrays.stream(monTab, 1, monTab.length).toArray();
+
+        System.out.println("exo 5.4_bis");
+
+        SerieC.printTab(monTab);
+
+        System.out.println("\n########\n");
+
+        int tmp = monTab[monTab.length - 1];
+
+        monTab[0] = tmp;
+
+        SerieC.printTab(tabOut);
     }
 
 }
