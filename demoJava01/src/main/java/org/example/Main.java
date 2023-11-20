@@ -2,8 +2,10 @@ package org.example;
 
 import org.example.exercice.Exercice;
 import org.example.exercice.ExoConditionsStructurelles;
+import org.example.exercice.ExoString;
 import org.example.operator.Operator;
 import org.example.readFromConsole.ReadFromConsole;
+import org.example.string.ChaineCharactere;
 import org.example.structure.Structure2;
 import org.example.variable.Variable;
 
@@ -46,6 +48,23 @@ public class Main {
         //ExoConditionsStructurelles.exo5_9();
         //ExoConditionsStructurelles.exo5_10();
         //ExoConditionsStructurelles.exo5_11();
+
+        //ChaineCharactere.getStringFunction();
+        //ChaineCharactere.getComparaisonString();
+        //ChaineCharactere.getFormatString();
+
+        String phrase = "Une chaine de caractère label rouge";
+        String mot = "Impossible";
+        String mot2 = "poissblimi";
+
+        ExoString.getExo1(phrase);
+        ExoString.getExo2(mot,'i');
+        ExoString.getExo3(mot,mot2);
+        ExoString.getExo3("crime","merci");
+        ExoString.getExo3("crime","merki");
+
+        ExoString.getExo4("radar");
+        ExoString.getExo4("salut");
 
         }
 

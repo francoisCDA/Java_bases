@@ -12,7 +12,6 @@ public class SerieC {
         }
     }
 
-
     public static void getExo5_5(int[] monTab) {
         System.out.println("\nexo 5.5");
         System.out.println(Arrays.toString(monTab));
@@ -51,7 +50,7 @@ public class SerieC {
 
             monTab[idx] = monTab[i];
             monTab[i] = min;
-
+            System.out.println(Arrays.toString(monTab));
         }
         System.out.println(Arrays.toString(monTab) + ", tri selection nombre d'itérations : " + cmpt);
         //printTab(monTab);
@@ -74,6 +73,7 @@ public class SerieC {
                     monTab[i+1] = monTab[i];
                     monTab[i]=tmp;
                 }
+
             }
         }
         System.out.println(Arrays.toString(monTab) + ", tri bulle 1 nombre d'itérations : " + cmpt);
@@ -108,6 +108,7 @@ public class SerieC {
                     if ( first == -1 ) { first = i; }
                     last = i+1 ;
                 }
+                System.out.println(Arrays.toString(monTab));
             }
             idxStart = first -1;
             idxEnd = last;
@@ -135,8 +136,5 @@ public class SerieC {
             System.out.println("les talbeaux ne sont pas de la même taille");
         }
     }
-
-
-
 
 }
