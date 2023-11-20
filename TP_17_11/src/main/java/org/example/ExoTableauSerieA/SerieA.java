@@ -2,6 +2,7 @@ package org.example.ExoTableauSerieA;
 
 import org.example.Main;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class SerieA {
@@ -119,6 +120,25 @@ public class SerieA {
         }
 
     }
+
+    public static void getExo5_bis() {
+        System.out.println("\n\nExercice 5 ");
+
+        Random random = new Random();
+
+        long[] monTab = new long[10];
+
+        for (int i = 0 ; i < monTab.length ; i ++ ) {
+            monTab[i] = random.nextInt(100) + 1;
+        }
+
+        for ( int i = 0 ; i < monTab.length ; i ++ ) {
+            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
+        }
+
+
+    }
+
 
 
     public static void getExo6() {

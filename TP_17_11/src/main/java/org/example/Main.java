@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SerieA.getExo6();
+        SerieA.getExo5_bis();
 
         int[] tableau = {1,77,2,3,4,9,65,4,1,5,2};
         int[] tableauB = {1,1,2,3,4,9};
