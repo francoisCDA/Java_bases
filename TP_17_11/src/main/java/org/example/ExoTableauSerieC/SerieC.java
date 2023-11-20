@@ -4,6 +4,13 @@ import org.example.Main;
 
 public class SerieC {
 
+    public static void printTab(int[] monTab) {
+        for ( int i = 0 ; i < monTab.length ; i ++ ) {
+            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
+        }
+    }
+
+
     public static void getExo5_5(int[] monTab) {
         System.out.println("exo 5.5");
 
@@ -16,11 +23,7 @@ public class SerieC {
             monTab[j] = tmp ;
 
         }
-
-        for ( int i = 0 ; i < monTab.length ; i ++ ) {
-            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
-        }
-
+        printTab(monTab);
     }
 
 
@@ -47,10 +50,7 @@ public class SerieC {
             monTab[i] = min;
 
         }
-
-        for ( int i = 0 ; i < monTab.length ; i ++ ) {
-            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
-        }
+        printTab(monTab);
 
     }
 
@@ -74,11 +74,7 @@ public class SerieC {
             }
 
         }
-
-        for ( int i = 0 ; i < monTab.length ; i ++ ) {
-            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
-        }
-
+        printTab(monTab);
     }
 
 

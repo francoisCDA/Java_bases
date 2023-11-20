@@ -1,5 +1,7 @@
 package org.example.ExoTableauSerieB;
 
+import org.example.ExoTableauSerieC.SerieC;
+
 public class SerieB {
 
     public static void getExo5_1(int[] monTab,int val) {
@@ -46,7 +48,7 @@ public class SerieB {
 
         for (int i = 1; i < monTab.length; i++) {
 
-            min = Math.min(monTab[i], min); // comme hier, je voulais faire un ternaire """ monTab[i] < min ? monTab[i] : min ; """ mais il tenait à le remplacer par sa fonction
+            min = Math.min(monTab[i], min); //  je voulais faire un ternaire """ monTab[i] < min ? monTab[i] : min ; """ mais il tenait à le remplacer par sa fonction
             max = Math.max(monTab[i], max);
 
         }
@@ -59,9 +61,7 @@ public class SerieB {
 
         System.out.println("exo 5.4");
 
-        for ( int i = 0 ; i < monTab.length ; i ++ ) {
-            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
-        }
+        SerieC.printTab(monTab);
 
         System.out.println("\n########\n");
 
@@ -73,11 +73,7 @@ public class SerieB {
 
         monTab[0] = tmp;
 
-        for ( int i = 0 ; i < monTab.length ; i ++ ) {
-            System.out.println("valeur " + (i+1) + " du tableau : " + monTab[i]);
-        }
-
-
+        SerieC.printTab(monTab);
     }
 
 }
