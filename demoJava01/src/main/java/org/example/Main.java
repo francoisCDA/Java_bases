@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.exercice.Exercice;
-import org.example.exercice.ExoConditionsStructurelles;
-import org.example.exercice.ExoString;
+import org.example.exercice.*;
 import org.example.operator.Operator;
 import org.example.readFromConsole.ReadFromConsole;
 import org.example.string.ChaineCharactere;
@@ -12,6 +10,10 @@ import org.example.variable.Variable;
 
 public class Main {
     public static void main(String[] args) {
+
+        String phrase = "Une chaine de caractère label rouge";
+        String mot = "Impossible";
+        String mot2 = "poissblimi";
 
         //Variable.getVariable();
 
@@ -53,20 +55,30 @@ public class Main {
         //ChaineCharactere.getComparaisonString();
         //ChaineCharactere.getFormatString();
 
-        String phrase = "Une chaine de caractère label rouge";
-        String mot = "Impossible";
-        String mot2 = "poissblimi";
 
-        ExoString.getExo1(phrase);
-        ExoString.getExo2(mot,'i');
-        ExoString.getExo3(mot,mot2);
-        ExoString.getExo3("crime","merci");
-        ExoString.getExo3("crime","merki");
 
-        ExoString.getExo4("radar");
-        ExoString.getExo4("salut");
+//        ExoString.getExo1(phrase);
+  //      ExoString.getExo2(mot,'i');
+    //    ExoString.getExo3(mot,mot2);
+    //    ExoString.getExo3("crime","merci");
+     //   ExoString.getExo3("crime","merki");
 
-        ExoString.getExo5();
+      //  ExoString.getExo4("radar");
+      //  ExoString.getExo4("salut");
+
+      //  ExoString.getExo5();
+      //  ExoString.getExo5_bis();
+
+       // Matrix.getMatrix();
+       // Matrix.getMatrix2();
+
+        org.example.exercice.Matrix.getExo2();
+
+        Matrix.getExo3();
+
+        //Jeux.getPendu(mot);
+
+
         }
 
 }

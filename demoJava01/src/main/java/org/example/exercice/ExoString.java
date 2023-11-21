@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class ExoString {
 
+    static Scanner scanner = new Scanner(System.in);
+
     public static void getExo1(String txt ) {
         System.out.printf("\n\n exo 1");
 
@@ -73,9 +75,9 @@ public class ExoString {
         }
 
         if (anagramme) {
-            System.out.printf("\n %s et %s sont anagrammes",mot1, mot2);
+            System.out.printf("\n %s et %s sont des anagrammes",mot1, mot2);
         } else {
-            System.out.printf("\n %s et %s ne sont pas anagrammes",mot1, mot2);
+            System.out.printf("\n %s et %s ne sont pas des anagrammes",mot1, mot2);
         }
 
     }
@@ -88,6 +90,7 @@ public class ExoString {
         for (int i = 0 ; i < mot.length()/2 ; i++ ) {
             if (mot.charAt(i) != mot.charAt(mot.length()-1-i) ) {
                 palindrome = false ;
+                break ;
             }
         }
 
@@ -99,7 +102,7 @@ public class ExoString {
 
     }
 
-    static Scanner scanner = new Scanner(System.in);
+    //static Scanner scanner = new Scanner(System.in);
 
     public static void getExo5() {
         System.out.printf("\n\n exo 5");
@@ -120,6 +123,36 @@ public class ExoString {
             }
             System.out.printf("\n");
         }
+    }
+
+    public static void getExo5_bis() {
+        System.out.printf("\n\n exo 5_bis");
+        int hauteur;
+        int delta;
+        int etoile = 0;
+
+        System.out.println("\nQuelle doit être la hauteur de la pyramide ?");
+        hauteur = scanner.nextInt();
+        delta = hauteur ;
+
+
+        for (int i = 1 ; i < hauteur ; i++ ) {
+
+            delta--;
+            etoile++;
+
+            for (int j = 0 ; j < delta ; j++) {
+                System.out.printf(" ");
+            }
+           // System.out.printf("*");
+            for (int j = 0 ; j < etoile * 2 ; j++) {
+                System.out.printf("*");
+            }
+
+            System.out.printf("\n");
+
+        }
+
     }
 
 }
