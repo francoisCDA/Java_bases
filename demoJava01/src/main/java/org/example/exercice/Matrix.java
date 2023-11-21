@@ -63,6 +63,9 @@ public class Matrix {
             if (!Objects.equals(saisie, "stop")) {
                 vendeurs.append(";");
                 vendeurs.append(saisie);
+                if (saisie.length()<5) {
+                    vendeurs.append("\t");
+                }
             }
         }
 
@@ -76,16 +79,19 @@ public class Matrix {
             if (!Objects.equals(saisie, "stop")) {
                 vehicules.append(";");
                 vehicules.append(saisie);
+                if (saisie.length()<5) {
+                    vehicules.append("\t");
+                }
             }
         }
 
-        System.out.println(vendeurs.toString());
+        //System.out.println(vendeurs.toString());
 
         tablVendeurs = vendeurs.toString().split(";");
         tablVehicules = vehicules.toString().split(";");
 
-        System.out.println(Arrays.toString(tablVendeurs));
-        System.out.println(Arrays.toString(tablVehicules));
+      //  System.out.println(Arrays.toString(tablVendeurs));
+       // System.out.println(Arrays.toString(tablVehicules));
 
         tableau = new String[tablVehicules.length][tablVendeurs.length];
 
@@ -99,20 +105,18 @@ public class Matrix {
             tableau[i][0] = tablVehicules[i];
         }
 
-        for (int i = 0 ; i < tableau.length ; i++) {
-            for (int j = 0 ; j < tableau[i].length ; j++) {
-                System.out.printf(" %s ", tableau[i][j] );
-            }
-            System.out.printf("\n");
-        }
 
 
-        for (int i = 1; i < tableau.length; i++) {
-            for (int j = 1; j < tableau.length; j++) {
+        for (int i = 1; i < tablVendeurs.length ; i++) {
+            for (int j = 1; j < tablVehicules.length; j++) {
                 System.out.printf("\n de Combien de %s ont été vendus par %s : \n", tableau[j][0], tableau[0][i]);
-                tableau[i][j] = Jeux.scannerGame.next();
+              //  System.out.printf("i: %d, j: %d \n",i,j);
+                tableau[j][i] = Jeux.scannerGame.next();
             }
+
         }
+
+        System.out.println("\n");
 
         for (int i = 0 ; i < tableau.length ; i++) {
             for (int j = 0 ; j < tableau[i].length ; j++) {
@@ -120,8 +124,6 @@ public class Matrix {
             }
             System.out.printf("\n");
         }
-
-
     }
 
 
