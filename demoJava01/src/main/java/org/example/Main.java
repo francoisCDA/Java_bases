@@ -81,7 +81,8 @@ public class Main {
        // ExoFunction.getExo1();
        // ExoFunction.getExo2();
        // ExoFunction.getExo3();
-        ExoFunction.getExo4();
+       // ExoFunction.getExo4();
+        ExoFunction.getExo6();
         }
 
 }

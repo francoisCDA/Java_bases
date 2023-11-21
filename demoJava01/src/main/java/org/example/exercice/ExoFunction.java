@@ -156,13 +156,18 @@ public class ExoFunction {
     }
 
 
-    public static int gcdRecursive(int firstNb, int secndNb) {
+    public static int gcdRecursive(int a, int b) {
 
-        int retour ;
 
-        
+        if ( b == 0 ) {
+            return a ;
+        } else if (a == 0) {
+            return b ;
+        } else {
+            System.out.println(a%b);
+            return gcdRecursive(a%b,a) ;
+        }
 
-        return
     }
 
 
@@ -181,7 +186,7 @@ public class ExoFunction {
         arNbInt = parseArStringToArInt(arNbStr);
 
 
-        System.out.println("\nLe plus grand diviseur commun entre %d et %d est %d\n",arNbInt[0],arNbInt[1],gcdRecursive(arNbInt[0],arNbInt[1]));
+        System.out.printf("\nLe plus grand diviseur commun entre %d et %d est %d \n",arNbInt[0],arNbInt[1],gcdRecursive(arNbInt[0],arNbInt[1]));
 
     }
 
