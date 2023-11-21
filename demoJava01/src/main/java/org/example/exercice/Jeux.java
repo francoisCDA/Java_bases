@@ -28,29 +28,33 @@ public class Jeux {
     public static void getPendu(String mot) {
 
         String lettres = "" ;
+        String badLettres= "" ;
         String saisie ;
+        int nbTry = 8 ;
 
         String outString = utilPendu(mot.toLowerCase(),lettres) ;
 
-        while ( outString.contains("_") ) {
+        while ( outString.contains("_") || nbTry > 0 ) {
 
-            System.out.printf("\n Vous devez deviner le mot : %s", outString );
+            System.out.printf("\n Vous devez deviner le mot : %s, nombre d'essais : %d, erreurs %s  ", outString, nbTry, badLettres);
 
             System.out.println("\n -> proposer une lettre : ");
             saisie = scannerGame.next();
-           // System.out.printf("lettre saisie : %s\n",saisie);
-           // System.out.println(mot.contains(saisie));
 
             if (mot.contains(saisie)) {
                 lettres += saisie;
-           //     System.out.printf("lettres : %s",lettres);
-
                 outString = utilPendu(mot.toLowerCase(),lettres) ;
+            } else {
+                badLettres += saisie + " " ;
+                nbTry--;
             }
-
-
         }
 
+        if (outString.contains("_")) {
+            System.out.println("\nPerdu, il fallait trouver\n"+ mot);
+        } else {
+            System.out.printf("\nGagné, %s était le mot à trouver\n",mot);
+        }
 
 
 

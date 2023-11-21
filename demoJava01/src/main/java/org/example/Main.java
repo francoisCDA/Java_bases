@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         String phrase = "Une chaine de caractère label rouge";
-        String mot = "Impossible";
+        String mot = "structuration";
         String mot2 = "poissblimi";
 
         //Variable.getVariable();
@@ -72,13 +72,16 @@ public class Main {
        // Matrix.getMatrix();
        // Matrix.getMatrix2();
 
-        org.example.exercice.Matrix.getExo2();
+       // org.example.exercice.Matrix.getExo2();
 
-        Matrix.getExo3();
+       // Matrix.getExo3();
 
-        //Jeux.getPendu(mot);
+       // Jeux.getPendu(mot);
 
-
+       // ExoFunction.getExo1();
+       // ExoFunction.getExo2();
+       // ExoFunction.getExo3();
+        ExoFunction.getExo4();
         }
 
 }

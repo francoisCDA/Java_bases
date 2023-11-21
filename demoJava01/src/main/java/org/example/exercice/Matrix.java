@@ -17,7 +17,7 @@ public class Matrix {
             }
         }
 
-        System.out.println(" la plus grande valeur du talbeau est : " + max);
+        System.out.println(" la plus grande valeur du tableau est : " + max);
 
     }
 
@@ -106,14 +106,11 @@ public class Matrix {
         }
 
 
-
         for (int i = 1; i < tablVendeurs.length ; i++) {
             for (int j = 1; j < tablVehicules.length; j++) {
                 System.out.printf("\n de Combien de %s ont été vendus par %s : \n", tableau[j][0], tableau[0][i]);
-              //  System.out.printf("i: %d, j: %d \n",i,j);
                 tableau[j][i] = Jeux.scannerGame.next();
             }
-
         }
 
         System.out.println("\n");
