@@ -215,7 +215,7 @@ public class ExoFunction {
 
     public static long getFactorielle(long nb) {
 
-        if (nb == 1 ) {
+        if ( nb == 0 ) {
             return 1 ;
         } else {
             return nb * getFactorielle(nb - 1) ;
