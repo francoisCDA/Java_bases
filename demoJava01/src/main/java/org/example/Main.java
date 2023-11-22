@@ -82,7 +82,7 @@ public class Main {
        // ExoFunction.getExo2();
        // ExoFunction.getExo3();
        // ExoFunction.getExo4();
-        ExoFunction.getExo6();
+        ExoFunction.getExo7();
         }
 
 }

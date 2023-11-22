@@ -116,6 +116,7 @@ public class ExoFunction {
         System.out.printf(" la phrase saisie compte %d mots.\n", getWordsAmount(txt));
     }
 
+
     public static String[] filterWordsByLength(int minLength, String[] mots) {
 
         StringBuilder retour = new StringBuilder();
@@ -156,18 +157,30 @@ public class ExoFunction {
     }
 
 
+    public static int gcdAntique(int a, int b) {
+
+        while( a != b ) {
+            System.out.printf(" a = %d , b = %d \n",a,b) ;
+            if ( a > b ) {
+                a -= b ;
+            } else  {
+                b -= a ;
+            }
+        }
+        System.out.printf(" a = %d , b = %d \n",a,b) ;
+
+        return a ;
+    }
+
+
     public static int gcdRecursive(int a, int b) {
-
-
+        System.out.printf(" a = %d , b = %d \n",a,b);
         if ( b == 0 ) {
             return a ;
-        } else if (a == 0) {
-            return b ;
         } else {
-            System.out.println(a%b);
-            return gcdRecursive(a%b,a) ;
+           // System.out.println(a%b);
+            return gcdRecursive(b,a%b) ;
         }
-
     }
 
 
@@ -178,6 +191,7 @@ public class ExoFunction {
         String nbres;
         String[] arNbStr;
         int[] arNbInt ;
+        int a,b;
 
         System.out.println("Saisir des entiers séparés par un espace");
         nbres = Jeux.scannerGame.nextLine();
@@ -185,8 +199,42 @@ public class ExoFunction {
         arNbStr = nbres.trim().split(" ");
         arNbInt = parseArStringToArInt(arNbStr);
 
+        if (arNbInt[0] > arNbInt[1]) {
+           a = arNbInt[0] ;
+           b = arNbInt[1] ;
+        } else {
+            a = arNbInt[1] ;
+            b = arNbInt[0] ;
+        }
 
-        System.out.printf("\nLe plus grand diviseur commun entre %d et %d est %d \n",arNbInt[0],arNbInt[1],gcdRecursive(arNbInt[0],arNbInt[1]));
+        System.out.printf("\nLe plus grand diviseur commun entre %d et %d est %d \n",arNbInt[0],arNbInt[1],gcdRecursive(a,b));
+
+        System.out.printf("\nLe plus grand diviseur commun entre %d et %d est %d \n",arNbInt[0],arNbInt[1],gcdAntique(a,b));
+    }
+
+
+    public static long getFactorielle(long nb) {
+
+        if (nb == 1 ) {
+            return 1 ;
+        } else {
+            return nb * getFactorielle(nb - 1) ;
+        }
+
+    }
+
+
+    public static void getExo7() {
+
+        long saisie ;
+        long factorielle;
+
+        System.out.println("saisir un nombre ");
+        saisie = Jeux.scannerGame.nextLong();
+
+        factorielle = getFactorielle(saisie);
+
+        System.out.println(saisie + "! = " + factorielle);
 
     }
 
