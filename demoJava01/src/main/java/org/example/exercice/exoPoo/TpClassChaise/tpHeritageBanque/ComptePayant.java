@@ -10,7 +10,7 @@ public class ComptePayant extends Compte {
     }
 
     public boolean debiter(float debit) {
-        if (solde > debit ) {
+        if (solde > debit + debit * prelevement ) {
             solde -= debit + debit * prelevement ;
             return true;
         } else {
