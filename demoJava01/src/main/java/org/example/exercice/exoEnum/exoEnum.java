@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class exoEnum {
 
-
     static Scanner scan = new Scanner(System.in);
 
     static public Priority getPriority(String type) {
@@ -17,7 +16,6 @@ public class exoEnum {
             case "B" :
                 return Priority.MEDIUM;
         }
-
         return Priority.LOW;
     }
 
@@ -25,15 +23,16 @@ public class exoEnum {
     public static void main(String[] args) {
 
         String saisie = "F" ;
+        Type lettre;
 
         while ( !(saisie.equals("A") || saisie.equals("B") || saisie.equals("C") || saisie.equals("D")) ) {
             System.out.println("Quel est le type de message (A/B/C/D) ?");
             saisie = scan.next().toUpperCase();
         }
 
-        System.out.println("La lettre est de priorité " + getPriority(saisie));
+        lettre = Type.valueOf(saisie);
 
-
+        System.out.println("La lettre est de priorité " + getPriority(lettre.name()));
 
     }
 }

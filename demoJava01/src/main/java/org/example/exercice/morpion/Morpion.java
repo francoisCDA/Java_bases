@@ -1,7 +1,5 @@
 package org.example.exercice.morpion;
 
-import org.example.exercice.Jeux;
-
 import java.util.Scanner;
 
 public class Morpion {
@@ -15,8 +13,14 @@ public class Morpion {
         boolean isGameOver = false;
         String joueur = "X";
         int saisie = -1;
+        String saisieTxt = "N";
         int nbCoup = 0 ;
+        boolean iaPlay = false;
 
+        System.out.println("Voulez-vous jouer contre l'ordinateur (o/N) ?");
+        saisieTxt = scan.next().toUpperCase();
+
+        if (saisieTxt.equals("O")) { iaPlay = true ;}
 
         while (!isGameOver) {
             saisie = -1 ;
@@ -33,7 +37,11 @@ public class Morpion {
             }
 
             if (!isGameOver) {
-                joueur = joueur == "X" ? "O" : "X" ;
+                if (iaPlay) {
+                    randomMove("O",nbCoup);
+                } else {
+                    joueur = joueur.equals("X") ? "O" : "X" ;
+                }
             }
         }
 
@@ -45,6 +53,30 @@ public class Morpion {
             System.out.println("Match nul !");
         }
 
+
+    }
+
+
+
+    private static void randomMove(String joueur, int nbCoup) {
+
+        Coord[] coords = new Coord[9-nbCoup];
+        int idx = 0 ;
+        Long randomIdx ;
+
+        for (int i = 0 ; i < 3 ; i++ ) {
+            for (int j= 0 ; j < 3 ; j++ ) {
+                if (grille[i][j].equals(" ")) {
+                    coords[idx] = new Coord(i,j);
+                    idx++;
+                }
+            }
+        }
+
+        randomIdx = Math.round(Math.random() * nbCoup);
+        idx = randomIdx.intValue();
+
+        grille[coords[idx].i][coords[idx].j] = joueur;
 
     }
 
@@ -125,5 +157,15 @@ public class Morpion {
                 System.out.print("\n");
             }
         }
+    }
+}
+
+
+class Coord {
+    int i,j;
+
+    Coord(int i, int j) {
+        this.i = i ;
+        this.j = j ;
     }
 }
