@@ -9,6 +9,7 @@ public class ComptePayant extends Compte {
         solde -= credit * prelevement;
     }
 
+    @Override
     public boolean debiter(float debit) {
         if (solde > debit + debit * prelevement ) {
             solde -= debit + debit * prelevement ;

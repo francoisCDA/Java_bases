@@ -8,7 +8,8 @@ public class CompteSimple extends Compte {
         this.decouvert = decouvert;
     }
 
-    public boolean debit(float debit) {
+    @Override
+    public boolean debiter(float debit) {
         if (solde > decouvert ) {
             solde -= debit ;
             return true;
