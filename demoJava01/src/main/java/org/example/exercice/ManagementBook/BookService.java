@@ -5,9 +5,9 @@ import java.util.List;
 
 public class BookService {
 
-    public static List<Book> filterBooksByAuthor(Auteur auteur,Book[] livres) {
+    public static Book[] filterBooksByAuthor(Auteur auteur,Book[] livres) {
 
-        List retLivres = new ArrayList<Book>();
+        List<Book> retLivres = new ArrayList<>();
 
         for (Book l:livres) {
            for ( Auteur a:l.auteurs ) {
@@ -17,13 +17,13 @@ public class BookService {
                }
            }
         }
-        return retLivres;
+        return retLivres.toArray(new Book[0]);
     }
 
 
-    public static List<Book> filterBooksByPublisher(Editeur editeur, Book[] livres) {
+    public static Book[] filterBooksByPublisher(Editeur editeur, Book[] livres) {
 
-        List retLivres = new ArrayList<Book>();
+        List<Book> retLivres = new ArrayList<>();
 
         for (Book l:livres) {
             if (l.editeur.equals(editeur)) {
@@ -31,11 +31,11 @@ public class BookService {
             }
         }
 
-        return retLivres;
+        return retLivres.toArray(new Book[0]);
     }
 
-    public static List<Book> filterBooksBySpecifiedYear(int annee, Book[] livres) {
-        List retLivres = new ArrayList<Book>();
+    public static Book[] filterBooksBySpecifiedYear(int annee, Book[] livres) {
+        List<Book> retLivres = new ArrayList<>();
 
         for (Book l:livres) {
             if (l.publishingAnnee == annee ) {
@@ -43,7 +43,7 @@ public class BookService {
             }
         }
 
-        return retLivres;
+        return retLivres.toArray(new Book[0]);
     }
 
 
