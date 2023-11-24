@@ -57,7 +57,9 @@ public class IHM {
 
                 case 3 -> printClientReservation();
 
-                case 4 -> cancelReservation();
+                case 4 -> newReservation();
+
+                case 5 -> cancelReservation();
 
                 case 6 -> printReservation();
 
@@ -70,6 +72,21 @@ public class IHM {
 
     }
 
+    private static void newReservation() {
+
+        int clientID,numChambre;
+
+        System.out.println("\n\t\t *** Création d'une nouvelle réservation ***");
+        System.out.println("\n\t -> Indiquer l'ID du client");
+        clientID = scan.nextInt();
+
+        System.out.println("\n\t -> Indiquer le numéro de chambre");
+        numChambre = scan.nextInt();
+
+        monHotel.reserver(clientID,numChambre);
+
+    }
+
     private static void printClientReservation() {
         int idClient;
         System.out.println("n\t => quelle est l'ID du client dont vous voulez les réservatrions (0 pour revenir au menu) ?");
@@ -79,7 +96,7 @@ public class IHM {
         if (idClient > 0) {
             monHotel.getReservationByClient(idClient);
         }
-        
+
     }
 
     private static void cancelReservation() {

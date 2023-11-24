@@ -1,7 +1,6 @@
 package org.example.exercice.TPHotel;
 
-public class main {
-
+public class MainHotel {
     public static void main(String[] args) {
 
         IHM.newHotel();
