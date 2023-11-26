@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Grille {
 
-    String[][] grille ;
-    int length = 3 ;
+    private String[][] grille ;
+    private int length = 3 ;
 
     public Grille() {
         this.grille = new String[][] {{" "," "," "},{" "," "," "},{" "," "," "}};
     }
+
 
     public Grille(String[][] table) {
         if (table != null) {
@@ -19,6 +20,26 @@ public class Grille {
                 this.grille[i] = table[i].clone();
             }
         }
+    }
+
+    public String[][] getGrille() {
+        return grille;
+    }
+
+    public String IJ(int i, int j) {
+        return grille[i][j];
+    }
+
+    public String IJ(Coord cd) {
+        return grille[cd.i][cd.j];
+    }
+
+    public void playOn(Coord coord, String joueur) {
+        this.grille[coord.i][coord.j] = joueur ;
+    }
+
+    public int length() {
+        return length;
     }
 
     public Coord[] getFreeCel() {

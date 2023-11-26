@@ -7,12 +7,12 @@ public class Display {
         System.out.print("\n");
 
         int cmpt = 7 ;
-        for (int i = 0 ; i < grille.length ; i++ ) {
+        for (int i = 0 ; i < grille.length() ; i++ ) {
             if (isGameOver) { System.out.print("\t\t"); }
             System.out.print("\t[");
-            for (int j = 0; j < grille.grille[i].length; j++) {
-                System.out.print(grille.grille[i][j]);
-                if (j != grille.length -1 ) {
+            for (int j = 0; j < grille.length() ; j++) {
+                System.out.print(grille.IJ(i,j));
+                if (j != grille.length() - 1 ) {
                     System.out.print("|");
                 } else {
                     System.out.print("]");
@@ -24,8 +24,8 @@ public class Display {
 
                 System.out.print("\t\t\t|");
 
-                for (int j = 0; j < grille.grille[i].length; j++) {
-                    System.out.print( grille.grille[i][j] == " " ? cmpt : " " );
+                for (int j = 0; j < grille.length(); j++) {
+                    System.out.print( grille.IJ(i,j) == " " ? cmpt : " " );
                     System.out.print("|");
                     cmpt++;
                 }
@@ -43,11 +43,11 @@ public class Display {
 
         int cmpt = 7 ;
 
-        for (int i = 0 ; i < grille.length ; i++) {
-            for ( int j = 0 ; j < grille.grille[0].length ; j++ ) {
+        for (int i = 0 ; i < grille.length() ; i++) {
+            for ( int j = 0 ; j < grille.length() ; j++ ) {
                 if (cmpt  == saisie) {
-                    if (grille.grille[i][j].equals(" ")){
-                        grille.grille[i][j] = joueur;
+                    if (grille.IJ(i,j).equals(" ")){
+                        grille.playOn(new Coord(i,j),joueur);
                         return saisie;
                     } else {
                         return -1;
