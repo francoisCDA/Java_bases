@@ -39,7 +39,9 @@ public class Morpion {
 
           if ( !isGameOver && !grille.gameTerminated() ) {
                 if (iaPlay) {
-                    Coord coord = ComputerPlay.bestMove(grille) ;
+                    //Coord coord = ComputerPlay.randomMove();
+                    //Coord coord = ComputerPlay.bestMove(grille) ;
+                    Coord coord = ComputerPlay.bestMove(grille);
                     grille.playOn(coord,"O");
                     isGameOver = grille.checkVictory();
                     if (isGameOver) {

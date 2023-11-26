@@ -38,6 +38,7 @@ public class Grille {
         this.grille[coord.i][coord.j] = joueur ;
     }
 
+
     public int length() {
         return length;
     }
@@ -54,6 +55,7 @@ public class Grille {
         return ret.toArray(new Coord[0]) ;
     }
 
+
     public boolean checkVictory() {
 
         for (int i = 0 ; i < 3 ; i++ ) {
@@ -63,12 +65,9 @@ public class Grille {
             }
         }
 
-        if ( !grille[1][1].equals(" ") && ( (grille[1][1].equals(grille[0][0]) && grille[1][1].equals(grille[2][2])) ||
-                (grille[1][1].equals(grille[0][2]) && grille[1][1].equals(grille[2][0])) )
-        ) {
-            return true ;
-        }
-        return false ;
+        return !grille[1][1].equals(" ") && ((grille[1][1].equals(grille[0][0]) && grille[1][1].equals(grille[2][2])) ||
+                (grille[1][1].equals(grille[0][2]) && grille[1][1].equals(grille[2][0])));
+
     }
 
     public boolean gameTerminated() {

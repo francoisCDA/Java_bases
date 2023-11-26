@@ -1,5 +1,8 @@
 package org.example.exercice.morpion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class ComputerPlay {
@@ -36,10 +39,51 @@ public class ComputerPlay {
             }
         }
 
+        //return randomMove(grille);
+
+        return bestNextMove(possibles,grille);
+
+    }
+
+
+    public static Coord bestNextMove(Coord[] possibles,Grille grille) {
+
+        if (findCoord(1,1,possibles)) {
+            return new Coord(1,1);
+        }
+
+        if (findCoord(0,0,possibles)) {
+            return new Coord(0,0);
+        }
+
+        if (findCoord(2,2,possibles)) {
+            return new Coord(2,2);
+        }
+
+        if (findCoord(0,2,possibles)) {
+            return new Coord(0,2);
+        }
+
+        if (findCoord(2,0,possibles)) {
+            return new Coord(2,0);
+        }
 
         return randomMove(grille);
 
     }
+
+
+    public static boolean findCoord(int i,int j, Coord[] coords) {
+
+        for (int a = 0 ; a < coords.length ; a++) {
+            if (coords[a].i == i && coords[a].j == j) {
+                return true ;
+            }
+        }
+
+        return false;
+    }
+
 
     private static int getScore(Grille grille, Coord ij, String vPlayer) {
 

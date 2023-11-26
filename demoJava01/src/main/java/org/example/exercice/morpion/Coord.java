@@ -7,4 +7,13 @@ public class Coord {
         this.i = i ;
         this.j = j ;
     }
+
+    @Override
+    public String toString() {
+        return "Coord{" +
+                "i=" + i +
+                ", j=" + j +
+                '}';
+    }
 }
+
