@@ -2,6 +2,7 @@ package org.example.exercice.TPHotel;
 
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class IHM {
@@ -115,16 +116,20 @@ public class IHM {
     private static void printReservation() {
         System.out.println("\t Liste des réservations :");
         //System.out.println(Arrays.toString(monHotel.getClientList()));
-        Client[] clientsTable = monHotel.getClientList();
-        for (Client cl:clientsTable) {
-            System.out.printf("\n ID : %d, %s %s, %d",cl.getId(),cl.getFirstname(),cl.getLastname(),cl.getTelephone());
+        Reservation[] reservTable = monHotel.getReservationList();
+        for (Reservation re:reservTable) {
+            System.out.printf("\n Num : %d, client : %s, id : %d, chambre : %d, statut : %s",re.getNumero(),monHotel.getClientByID(re.getClientID()),re.getClientID(),re.getNumero(),re.statut() );
         }
 
     }
 
     private static void printClients() {
         System.out.println("\t Liste des clients de l'hôtel :");
-        System.out.println(Arrays.toString(monHotel.getClientList()));
+
+        Client[] clientsTable = monHotel.getClientList();
+        for (Client cl:clientsTable) {
+            System.out.printf("\n ID : %d, %s %s, %d",cl.getId(),cl.getFirstname(),cl.getLastname(),cl.getTelephone());
+        }
     }
 
     private static void nouvoClient() {

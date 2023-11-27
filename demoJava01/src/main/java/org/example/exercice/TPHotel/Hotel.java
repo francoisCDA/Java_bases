@@ -13,12 +13,20 @@ public class Hotel {
 
     public Hotel(String nom) {
         this.nom = nom;
-        chambreTable = new Chambre[20];
-        for (Chambre ch:chambreTable) {
-            ch = new Chambre();
-        }
+        chambreTable = initChambre();
+//        for (Chambre ch:chambreTable) {
+//            ch = new Chambre();
+//        }
         reservationList = new ArrayList<>();
         clientList = new ArrayList<>();
+    }
+
+    private Chambre[] initChambre() {
+        Chambre[] ret = new Chambre[20];
+        for (int i = 0 ; i < ret.length ; i++) {
+            ret[i] = new Chambre();
+        }
+        return ret;
     }
 
     public String getNom() {
@@ -29,12 +37,22 @@ public class Hotel {
         return chambreTable;
     }
 
-    public Reservation[] getReservationList() {
-        return reservationList.toArray(new Reservation[0]);
-    }
+    public Reservation[] getReservationList() { return reservationList.toArray(new Reservation[0]); }
+
 
     public Client[] getClientList() {
         return clientList.toArray(new Client[0]);
+    }
+
+    public String getClientByID(int id) {
+        Client[]  clients = getClientList();
+
+        for (Client cl:clients) {
+            if (cl.getId() == id) {
+                return cl.getLastname() + " " + cl.getFirstname();
+            }
+        }
+        return "inconnu";
     }
 
     public void nouveauCLient(String lastName, String firstname, int telephone) {
@@ -71,8 +89,6 @@ public class Hotel {
         } else {
             System.out.printf("\n\t !!! l'id client %d est inconnu \n",id);
         }
-
-        List<Reservation> ret = new ArrayList<>() ;
 
     }
 
