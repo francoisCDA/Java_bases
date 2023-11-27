@@ -9,7 +9,7 @@ public class IHM {
 
     private static Scanner scan = new Scanner(System.in);
 
-    private static Hotel monHotel;
+    private  static Hotel monHotel;
 
     public static void newHotel() {
 
@@ -64,11 +64,15 @@ public class IHM {
 
                 case 6 -> printReservation();
 
+                default -> System.out.println("\n\t !!! Choix invalide");
+
             }
 
             displayMenu();
+
         } else {
-            System.out.println("\n\t Merci d'avoir utilisé Hotel Assitant");
+            scan.close();
+            System.out.println("\n\t Merci d'avoir utilisé Hotel Assistant");
         }
 
     }
@@ -110,8 +114,8 @@ public class IHM {
         if (numToCancel > 0) {
             monHotel.reservationCancel(numToCancel);
         }
-
     }
+
 
     private static void printReservation() {
         System.out.println("\t Liste des réservations :");
@@ -120,7 +124,6 @@ public class IHM {
         for (Reservation re:reservTable) {
             System.out.printf("\n Num : %d, client : %s, id : %d, chambre : %d, statut : %s",re.getNumero(),monHotel.getClientByID(re.getClientID()),re.getClientID(),re.getNumero(),re.statut() );
         }
-
     }
 
     private static void printClients() {
@@ -150,6 +153,7 @@ public class IHM {
         monHotel.nouveauCLient(lastName,firstName,phone);
 
     }
+
 
 
 }

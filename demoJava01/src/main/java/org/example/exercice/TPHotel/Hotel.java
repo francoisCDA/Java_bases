@@ -99,7 +99,6 @@ public class Hotel {
                 return ch.isLibre();
             }
         }
-
         return false;
     }
 
