@@ -22,7 +22,7 @@ public class IHM {
 
         monHotel = new Hotel(saisie);
 
-        System.out.printf("\n\t Bienvenu à l'hôtel %s \n",monHotel.getNom());
+        System.out.printf("\n\t Bienvenu à l'hôtel %s",monHotel.getNom());
 
         displayMenu();
     }
@@ -113,12 +113,17 @@ public class IHM {
     }
 
     private static void printReservation() {
-        System.out.println("n\t Liste des réservations :");
-        System.out.println(Arrays.toString(monHotel.getClientList()));
+        System.out.println("\t Liste des réservations :");
+        //System.out.println(Arrays.toString(monHotel.getClientList()));
+        Client[] clientsTable = monHotel.getClientList();
+        for (Client cl:clientsTable) {
+            System.out.printf("\n ID : %d, %s %s, %d",cl.getId(),cl.getFirstname(),cl.getLastname(),cl.getTelephone());
+        }
+
     }
 
     private static void printClients() {
-        System.out.println("n\t Liste des clients de l'hôtel :");
+        System.out.println("\t Liste des clients de l'hôtel :");
         System.out.println(Arrays.toString(monHotel.getClientList()));
     }
 
