@@ -1,16 +1,25 @@
 package org.Billetterie.Display;
 
 import org.Billetterie.Classes.Lieu;
+import org.Billetterie.Display.Exceptions.SaisieNull;
+import org.Billetterie.Display.Menus.Home;
+import org.Billetterie.Display.Menus.MenuSalles;
 import org.Billetterie.JSQL.DDBBilletterie;
 import org.Billetterie.JSQL.FakeData;
+import org.Billetterie.JSQL.MaBilletterie;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static java.lang.Integer.parseInt;
 
 public class IHM {
 
     private static Scanner scan = new Scanner(System.in);
 
-    private static DDBBilletterie maBilletterie = new DDBBilletterie() ;
+    private static DDBBilletterie maBilletterie = MaBilletterie.getBilletterie();
+
 
     public static void initBilleterie() {
         FakeData.initBilleterie(maBilletterie);
@@ -18,27 +27,12 @@ public class IHM {
         System.out.println("\n\t *** Billetterie initialisée ***");
     }
 
-
     public static void start() {
 
-        int choix;
-        String[] mainMenu = {"Menu salles", "Menu évènements", "Menu clients", "Quitter l'application"};
-
-
-        choix = MenuBilleterie(mainMenu);
-
-        switch (choix) {
-            case 1 -> menuSalle();
-
-            case 2 -> menuEvent();
-
-            case 3 -> menuClient();
-
-            default -> System.out.println("Au revoir");
-        }
-
-
+        H1("bienvenue");
+        Home.mainMenu();
     }
+
 
     private static void menuClient() {
         System.out.println("à implémenter");
@@ -50,101 +44,108 @@ public class IHM {
         start();
     }
 
-    private static void menuSalle() {
-        int choix;
-        String[] mainMenu = {"Afficher les salles", "Ajouter une salle", "Modifier une salle", "Supprimer une salle", "Retour au menu principal"};
-
-        choix = MenuBilleterie(mainMenu);
-
-        switch (choix) {
-            case 1 -> afficheSalles();
-
-            case 2 -> addSalle();
-
-            case 3 -> changeSalle();
-
-            case 4 -> rmSalle();
-
-            default -> start();
-        }
+    public static int menuBilleterie(String[] menu)  {
+       return menuBilleterie(menu,"Choisir une option");
     }
 
-    private static void afficheSalles() {
-       Lieu[] salles = maBilletterie.getSalles();
-
-       for (Lieu s:salles) {
-           System.out.println(s.toString());
-       }
-
-        menuSalle();
-    }
-
-    private static void addSalle() {
-
-        String nom, adresse;
-        int capacite;
-
-        System.out.println(" *** AJOUTER UNE SALLE *** ");
-        System.out.println("\n\t nom de la salle :");
-        nom = scan.nextLine();
-
-        System.out.println("\t adresse de la salle :");
-        adresse = scan.nextLine();
-
-        System.out.println("\t capacité de la salle :");
-        capacite = scan.nextInt();
-        scan.nextLine();
-
-        if (capacite > 0) {
-            maBilletterie.addSalle(nom,adresse,capacite);
-            System.out.println("\t >> Nouvelle salle ajoutée");
-        } else {
-            System.out.println("\t !! Capacité négative, ajout impossible");
-        }
-
-
-        menuSalle();
-    }
-
-    private static void changeSalle() {
-
-
-        System.out.println("à implémenter");
-
-        menuSalle();
-    }
-
-    private static void rmSalle() {
-
-        System.out.println("à implémenter");
-
-        menuSalle();
-    }
-
-
-    private static int MenuBilleterie(String[] menu) {
-
-        int saisie ;
-
-        System.out.println("\n > CHOISIR UNE OPTION :");
+    public static int menuBilleterie(String[] menu,String titre)  {
+        System.out.printf("\n > %s :\n",titre);
         for (int i = 0 ; i < menu.length ; i++ ) {
             System.out.printf("\n\t %d : %s",i+1,menu[i]);
         }
-        System.out.print("\n\n\t> ");
+
         try {
-            saisie = scan.nextInt();
-            if (saisie < 1 || saisie > menu.length) {
-                System.out.println("\t ! Saisie invalide");
+
+            int ret = inputNumber("\n\n\t");
+
+            if (ret < 1 || ret > menu.length) {
+                consoleFail("Choix innexistant");
                 return 0;
             }
-            return saisie;
-        } catch ( Exception e ) {
-            System.out.println("Saisie Incorrecte : " + e.getMessage());
+            return ret;
+        } catch ( SaisieNull e ) {
+            consoleError("saisie invalide");
             return 0;
         }
 
     }
 
+    public static void H1(String titre) {
+        System.out.printf("\n\n *** %s ***\n\n",titre.toUpperCase());
+    }
 
+    public static String inputText(String label) {
+        System.out.printf("\t %s > ",label);
+        String ret = scan.nextLine();
+        System.out.print("\n");
+        return ret;
+    }
+
+    public static int inputNumber(String label) throws SaisieNull {
+
+        String saisie = inputText(label);
+        int retour ;
+
+        try {
+            retour = parseInt(saisie) ;
+        } catch (Exception e) {
+            throw new SaisieNull("NaN");
+        }
+
+        return retour;
+    }
+
+    public static void consoleError(String error) {
+        System.out.printf("\n\n !!! %s !!!\n",error.toUpperCase());
+    }
+
+    public static void consoleConfirm(String log) {
+        System.out.printf("\n\t >> %s\n",log);
+    }
+
+    public static void consoleFail(String log) {
+        System.out.printf("\n\t !! %s\n",log);
+    }
+
+    public static void consoleLi(String li) {
+        System.out.printf("\t - %s\n",li);
+    }
+
+    public static boolean isCourrielFormat(String mail) {
+        // on va pas se mentir, merci chatGPT
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        Pattern courrielPattern = Pattern.compile(regex);
+        Matcher matcher = courrielPattern.matcher(mail);
+
+        return matcher.matches();
+
+    }
+
+    public static boolean isNoNumberChain(String nom) {
+        // on va pas se mentir, merci chatGPT
+        String regex = "^[^0-9]*$";
+
+        Pattern monPattern = Pattern.compile(regex);
+        Matcher matcher = monPattern.matcher(nom);
+
+        return matcher.matches();
+    }
+
+    public static String capitalize(String noms) {
+
+        StringBuilder retour = new StringBuilder();
+        String[] tableNoms = noms.split(" ");
+
+        for (String n:tableNoms) {
+            if (!n.isEmpty()) {
+                char initiale = Character.toUpperCase(n.charAt(0));
+                String nomCapitalised = initiale + n.substring(1);
+                retour.append(nomCapitalised + " ");
+            }
+        }
+
+        return retour.toString().trim();
+    }
 
 }

@@ -5,11 +5,15 @@ import java.time.LocalTime;
 
 public class Billet {
 
-    private final int numero;
-    private final String refEvent;
-    public Billet(String refEvent,int numero) {
+    private final String numero;
+    private Event event;
+    public Billet(Event event,String numero) {
         this.numero = numero;
-        this.refEvent = refEvent;
+        this.event = event;
+    }
+
+    public String toString() {
+        return "numéro : " + numero + ", " + event.toString();
     }
 
 }

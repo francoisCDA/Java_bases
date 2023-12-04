@@ -20,7 +20,7 @@ public class FakeData {
 
     public static final String[] firstnames = new String[]{"Jean", "Pierre", "Marie", "Paul", "Julie", "Sophie", "Luc", "Alice", "Antoine", "Camille","Léa", "Louis", "Emma", "Adrien", "Clara"};
 
-    public static final String[] eventName = new String[]{"Toto tournée 2023","Henri Van Hallen", "Conférence Les Any c'est la vie.", "Pour ou contre les débats", "Christophe D a cappela", "The Utopic Quintet", "Antoine D and the Reactvenger", "Another place to be"};
+    public static final String[] eventName = new String[]{"Toto tournée 2024", "Henri Van Hallen", "TedTalk: Les Any c'est la vie.", "Pour ou contre les débats", "Java A cappela by Christophe D", "The Utopic Quintet", "Antoine D && the Reactvenger", "Another place to be", "Another beer to place", "The Bootstrap Blues Compagnons"};
 
 
     // mais pas les méthodes
@@ -53,7 +53,7 @@ public class FakeData {
         LocalDate hui = LocalDate.now();
 
         for (int i = 0 ; i < eventName.length ; i++) {
-            billetterie.addEvent(eventName[i],hui.minusDays(rand.nextInt(40)+2), LocalTime.of(rand.nextInt(9)+12,0),billetterie.randLieu(), rand.nextInt(50)+10);
+            billetterie.addEvent(eventName[i],hui.plusDays(rand.nextInt(30)-10), LocalTime.of(rand.nextInt(9)+12,0),billetterie.randLieu(), rand.nextInt(50)+10);
         }
 
     }

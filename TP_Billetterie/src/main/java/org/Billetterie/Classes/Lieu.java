@@ -16,4 +16,11 @@ public class Lieu {
 
     private int capacite;
 
+
+    public String toString() {
+        return nom + ", " + capacite + " places, " + adresse;
+    }
+
 }
+
+

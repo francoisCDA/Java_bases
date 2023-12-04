@@ -44,20 +44,20 @@ public class Event {
     }
 
     public boolean isNbPlacesLibres(int nbPlaces) {
-        return nbPlaces > nbPlaceLibre();
+        return nbPlaces < nbPlaceLibre();
     }
 
     public Billet[] vendreBillet(int nbPlace) throws PasAssezDePlace, DateError {
 
 
-        if (LocalDate.now().isAfter(date)) throw new DateError("Evenement " + nom + "terminé");
+        if (LocalDate.now().isAfter(date)) throw new DateError("Evenement : \"" + nom + "\" terminé");
         if (!isNbPlacesLibres(nbPlace)) throw new PasAssezDePlace("Nombre de place libre insuffissante");
 
         ArrayList<Billet> ret = new ArrayList<>() ;
 
         if (nbPlace>0) {
             for (int i = 0 ; i < nbPlace ; i++) {
-                ret.add(new Billet(this.id,++cmptBillets));
+                ret.add(new Billet(this,String.format("%05d",++cmptBillets) ));
                 billetsVendus++;
             }
         } else {
@@ -80,6 +80,9 @@ public class Event {
         }
     }
 
+    public String toString(){
+        return nom + ", " + salle.getNom() + ", " + date + ", " + heure + ", " + prix + "€, " + nbPlaceLibre()  + " places disponibles";
+    }
 
 
 

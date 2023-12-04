@@ -4,16 +4,14 @@ import lombok.ToString;
 import org.Billetterie.Classes.Client;
 import org.Billetterie.Classes.Event;
 import org.Billetterie.Classes.Lieu;
+import org.Billetterie.Display.IHM;
 import org.Billetterie.JSQL.Exceptions.ErrorEvent;
 import org.Billetterie.JSQL.Exceptions.ErrorLieu;
 import org.Billetterie.JSQL.Exceptions.KnowMail;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 @ToString
 public class DDBBilletterie {
@@ -35,7 +33,8 @@ public class DDBBilletterie {
     }
 
 
-    // ****************** salle ************************
+    // ****************** Lieux ************************
+
     public void addSalle(String nom, String adresse, int capacite) {
         String key = "salle-" + ++cptSalle;
         Lieu newLieu = new Lieu(key,nom,adresse,capacite);
@@ -44,16 +43,27 @@ public class DDBBilletterie {
 
     public void rmSalle(String key) throws ErrorLieu, ErrorEvent {
         if (!mesSalles.containsKey(key)) throw new ErrorLieu("ID salle inconnue");
-        for (Map.Entry<String, Event> ev: this.mesEvenements.entrySet()) {
-            if (mesEvenements.get(ev).getSalle().equals(key)) {
-                cancelEvent(String.valueOf(ev));
-            }
-        }
+
+//        Event[] actualEvent = mesEvenements.values().toArray(new Event[0]);
+//
+//        if (actualEvent.length > 0 ){
+//
+//            for (Event e:actualEvent) {
+//                if (e.getSalle().getId())
+//            }
+//        }
+//
+
         mesSalles.remove(key);
     }
 
+
     public Lieu[] getSalles() {
         return mesSalles.values().toArray(new Lieu[0]);
+    }
+
+    public Lieu getSalle(String key) {
+        return mesSalles.get(key);
     }
 
 
@@ -67,6 +77,10 @@ public class DDBBilletterie {
 
 
     // ****************** Evènements ************************
+
+    public Event[] getEvent() {
+        return mesEvenements.values().toArray(new Event[0]) ;
+    }
 
     public void addEvent(String nom, LocalDate date, LocalTime heure, Lieu salle, int prix) {
         String key = "event-" + nom + "-" + date + "-" + ++cptEvent;
@@ -120,9 +134,17 @@ public class DDBBilletterie {
         if (mesClients.containsKey(email)) {
             throw new KnowMail("address mail déjà connue");
         } else {
-            Client newClient = new Client(lastname, firstname, email);
+            Client newClient = new Client(lastname.toUpperCase(), firstname, email);
             mesClients.put(email,newClient);
         }
+    }
+
+    public Client getClient(String mail) {
+        return mesClients.getOrDefault(mail, null);
+    }
+
+    public Client[] getAllClients() {
+        return mesClients.values().toArray(new Client[0]);
     }
 
     public void changeMail(String oldMail, String newMail) throws KnowMail {
@@ -135,6 +157,8 @@ public class DDBBilletterie {
             throw new KnowMail("error addresse mail");
         }
     }
+
+    //public boolean achatBillet
 
     public void changeLast(String mail, String newLast) throws KnowMail {
         if (!mesClients.containsKey(mail)) throw new KnowMail("Adresse mail inconnue");
@@ -155,6 +179,7 @@ public class DDBBilletterie {
             throw new KnowMail("Adresse inconnue");
         }
     }
+
 
 
 
