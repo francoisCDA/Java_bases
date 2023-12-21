@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class MenuClient {
 
-    private static DDBBilletterie maBilleterie = MaBilletterie.getBilletterie();
+    //private static DDBBilletterie maBilleterie = MaBilletterie.getBilletterie();
 
     public static void mnClients() {
 
@@ -32,7 +32,7 @@ public class MenuClient {
 
     public static void mnClient() {
 
-        Client[] clients = maBilleterie.getAllClients();
+        Client[] clients = IHM.serviceBilleterie.getClients().toArray(new Client[0]); ;
         String[] menuData = {"Sélectionner client ->","Recherche par nom","Filtrer par Evènement TODO"," - RETOUR -"};
         int choix;
 
@@ -110,9 +110,6 @@ public class MenuClient {
 
         HashMap<String,Event> clEvent = new HashMap<>();
 
-
-
-
     }
 
     private static void addClient() {
@@ -126,11 +123,12 @@ public class MenuClient {
         mail = IHM.inputText("courriel").trim();
 
         if (!last.isEmpty() && !first.isEmpty() && IHM.isNoNumberChain(last+first) && IHM.isCourrielFormat(mail)) {
-            try {
-                maBilleterie.addClient(last,first,mail);
-                IHM.consoleConfirm("Client créé : " + maBilleterie.getClient(mail).toString() );
-            } catch (KnowMail err) {
-                IHM.consoleError(err.getMessage() + "aucun client créé");
+
+            Client client = IHM.serviceBilleterie.addNewClient(last,first,mail);
+            if ( client != null) {
+                IHM.consoleConfirm("Client créé : " + client.toString() );
+            } else {
+                IHM.consoleFail("Problème à la création du client");
             }
 
         } else {

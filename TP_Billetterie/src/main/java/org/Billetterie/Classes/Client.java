@@ -10,6 +10,8 @@ import java.util.Arrays;
 @Data
 public class Client {
 
+    private int id ;
+
     private String lastname;
 
     private String firstname;
@@ -18,7 +20,8 @@ public class Client {
 
     private ArrayList<Billet> billets;
 
-    public Client(String lastname, String firstname, String email) {
+    public Client(int id, String lastname, String firstname, String email) {
+        this.id = id ;
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;

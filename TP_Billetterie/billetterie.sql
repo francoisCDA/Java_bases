@@ -2,7 +2,7 @@
 		TP Billetterie
 ********************************/
 
-DROP TABLE IF EXISTS billetterie;
+DROP DATABASE IF EXISTS billetterie;
 
 CREATE DATABASE IF NOT EXISTS billetterie;
 
@@ -28,17 +28,17 @@ CREATE TABLE client(
 	id_client INT AUTO_INCREMENT PRIMARY KEY,
     first VARCHAR(50),
     last VARCHAR(50),
-    email VARCHAR(100)
+    email VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE billet(
 	id_billet INT AUTO_INCREMENT PRIMARY KEY,
-    lieu_bi INT REFERENCES lieu(id_lieu),
-    client_bi INT REFERENCES client(id_client),
+    event_id INT REFERENCES event(id_event),
+    client_id INT REFERENCES client(id_client),
     cancel BOOLEAN DEFAULT FALSE
 );
 
-
+SELECT * FROM lieu;
 
 
 

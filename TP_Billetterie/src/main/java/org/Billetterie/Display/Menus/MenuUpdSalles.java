@@ -26,7 +26,11 @@ public class MenuUpdSalles {
         String newNom = IHM.inputText("Indiquer le nouveau nom");
         if (!newNom.trim().isEmpty()) {
             salle.setNom(newNom.trim());
-            IHM.consoleConfirm("Nouveau nom du lieu : " + salle.getNom());
+            if (IHM.serviceBilleterie.updateLieu(salle)){
+                IHM.consoleConfirm("Nouveau nom du lieu : " + salle.getNom());
+            } else {
+                IHM.consoleFail("Erreur serveur");
+            }
 
         } else {
             IHM.consoleFail("Echec de mise à jour, le nom ne peut pas être vide");
@@ -39,7 +43,12 @@ public class MenuUpdSalles {
         String newAdresse = IHM.inputText("Indiquer une nouvelle adresse");
         if (!newAdresse.trim().isEmpty()) {
             salle.setAdresse(newAdresse.trim());
-            IHM.consoleConfirm("Nouvelle adresse du lieu : " + salle.getAdresse());
+            if (IHM.serviceBilleterie.updateLieu(salle)){
+                IHM.consoleConfirm("Nouvelle adresse du lieu : " + salle.getAdresse());
+            } else  {
+                IHM.consoleFail("Erreur serveur");
+            }
+
         } else {
             IHM.consoleFail("Echec de mise à jour, l'adresse ne peut pas être vide");
         }
@@ -52,7 +61,12 @@ public class MenuUpdSalles {
             int newCapacite = IHM.inputNumber("Nouvelle capacitée");
             if (newCapacite > 0 ) {
                 salle.setCapacite(newCapacite);
-                IHM.consoleConfirm("Nouvelle capacié : "+ salle.getCapacite());
+                if (IHM.serviceBilleterie.updateLieu(salle)) {
+                    IHM.consoleConfirm("Nouvelle capacié : "+ salle.getCapacite());
+                } else {
+                    IHM.consoleFail("Problème, Capacité inchangée");
+                }
+
             } else {
                 IHM.consoleFail("Capacité impossible");
             }

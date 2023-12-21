@@ -1,5 +1,6 @@
 package org.Billetterie.JDBC.services;
 
+import org.Billetterie.Classes.Client;
 import org.Billetterie.Classes.Lieu;
 import org.Billetterie.JDBC.dao.BilletDAO;
 import org.Billetterie.JDBC.dao.ClientDAO;
@@ -15,14 +16,45 @@ public class ServicesBilleterie {
     private ClientDAO clientDAO;
     private BilletDAO billetDAO;
 
-
-    public ArrayList<Lieu> getLieux(){
-
-        return lieuDAO.getLieux();
-
-
+    public ServicesBilleterie() {
+        lieuDAO = new LieuDAO();
+        eventDAO = new EventDAO();
+        clientDAO = new ClientDAO();
+        billetDAO = new BilletDAO();
     }
 
+// **************************************** Lieux ************************
+    public ArrayList<Lieu> getLieux(){
+        return lieuDAO.get();
+    }
+
+    public boolean addNewLieu(String nom, String adresse, int capacite){
+        return lieuDAO.addNew(nom,adresse,capacite);
+    }
+
+    public boolean updateLieu(Lieu lieu) {
+        return lieuDAO.update(lieu);
+    }
+
+    public boolean deleteLieu(int id) { return lieuDAO.delete(id); }
+
+    // **************************************** Client ************************
+    public Client addNewClient(String last, String first, String email){
+         return clientDAO.addNew(last,first,email);
+    }
+
+    public ArrayList<Client> getClients() {
+        return clientDAO.get();
+    }
+
+    public boolean updateClient(Client client) { return clientDAO.update(client); }
+
+    public boolean deleteClient(int id) { return clientDAO.delete(id); }
 
 
+    // **************************************** Event ************************
+
+
+
+    // **************************************** Billet ************************
 }

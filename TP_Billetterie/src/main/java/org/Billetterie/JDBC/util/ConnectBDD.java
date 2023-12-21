@@ -1,10 +1,12 @@
 package org.Billetterie.JDBC.util;
 
+import org.Billetterie.Display.IHM;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectBDD {
+public abstract class ConnectBDD {
 
     private static final String URI = "jdbc:mysql://localhost:3306/billetterie";
 
@@ -23,7 +25,9 @@ public class ConnectBDD {
         if (connection == null) {
             try {
                 connection = DriverManager.getConnection(URI,USER,PASSWORD);
+                IHM.consoleConfirm("Connection à la base de donnée...");
             } catch (SQLException e) {
+                IHM.consoleError("connection fail");
                 throw new RuntimeException(e);
             }
         }

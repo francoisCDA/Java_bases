@@ -4,6 +4,7 @@ import org.Billetterie.Classes.Lieu;
 import org.Billetterie.Display.Exceptions.SaisieNull;
 import org.Billetterie.Display.Menus.Home;
 import org.Billetterie.Display.Menus.MenuSalles;
+import org.Billetterie.JDBC.services.ServicesBilleterie;
 import org.Billetterie.JSQL.DDBBilletterie;
 import org.Billetterie.JSQL.FakeData;
 import org.Billetterie.JSQL.MaBilletterie;
@@ -20,8 +21,10 @@ public class IHM {
 
     private static DDBBilletterie maBilletterie = MaBilletterie.getBilletterie();
 
+    public static ServicesBilleterie serviceBilleterie = new ServicesBilleterie() ;
 
     public static void initBilleterie() {
+
         FakeData.initBilleterie(maBilletterie);
         System.out.println(maBilletterie);
         System.out.println("\n\t *** Billetterie initialisée ***");
@@ -30,6 +33,13 @@ public class IHM {
     public static void start() {
 
         H1("bienvenue");
+
+        String[] init = new String[]{"initialiser la BDD", "continer"};
+
+        int choix = menuBilleterie(init);
+
+        if (choix == 1 ) FakeData.initSQL();
+
         Home.mainMenu();
     }
 

@@ -8,7 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Lieu {
 
-    private Integer id;
+    private int id;
 
     private String nom;
 

@@ -6,8 +6,8 @@ import org.Billetterie.Classes.Exceptions.DateError;
 import org.Billetterie.Classes.Exceptions.OutOfCapacity;
 import org.Billetterie.Classes.Exceptions.PasAssezDePlace;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import java.sql.Time;
 import java.util.ArrayList;
 
 @Data
@@ -15,8 +15,7 @@ public class Event {
 
     private String id;
     private String nom;
-    private LocalDate date;
-    private LocalTime heure;
+    private Date
     private Lieu salle;
     private int prix;
     private int billetsVendus;

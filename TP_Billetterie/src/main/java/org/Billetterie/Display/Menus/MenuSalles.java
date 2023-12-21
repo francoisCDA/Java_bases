@@ -8,9 +8,11 @@ import org.Billetterie.JSQL.Exceptions.ErrorEvent;
 import org.Billetterie.JSQL.Exceptions.ErrorLieu;
 import org.Billetterie.JSQL.MaBilletterie;
 
+import java.util.ArrayList;
+
 public class MenuSalles {
 
-    private static DDBBilletterie maBilletterie  = MaBilletterie.getBilletterie();
+  //  private static DDBBilletterie maBilletterie  = MaBilletterie.getBilletterie();
 
     public static void mnSalle() {
 
@@ -34,11 +36,15 @@ public class MenuSalles {
 
     private static void afficheSalles() {
 
-        Lieu[] salles = maBilletterie.getSalles();
+//        Lieu[] salles = maBilletterie.getSalles();
+//
+//        for (Lieu s:salles) {
+//           IHM.consoleLi(s.toString());
+//        }
 
-        for (Lieu s:salles) {
-           IHM.consoleLi(s.toString());
-        }
+        ArrayList<Lieu> lieux = IHM.serviceBilleterie.getLieux();
+
+        lieux.forEach(l -> IHM.consoleLi(l.toString()));
 
         mnSalle();
     }
@@ -57,8 +63,9 @@ public class MenuSalles {
             capacite = IHM.inputNumber("Capacité de la salle");
 
             if (capacite > 0 && !nom.trim().isEmpty() && !adresse.trim().isEmpty()) {
-                maBilletterie.addSalle(nom.trim(),adresse.trim(),capacite);
-                IHM.consoleConfirm("Le lieu a bien été ajouté.");
+                if (IHM.serviceBilleterie.addNewLieu(nom.trim(),adresse.trim(),capacite)){
+                    IHM.consoleConfirm("Le lieu a bien été ajouté.");
+                }
             } else {
                 IHM.consoleFail("Valeur incorrectes, ajout impossible");
             }
@@ -66,15 +73,14 @@ public class MenuSalles {
         } catch ( SaisieNull err) {
             IHM.consoleError("saisie capacité invalide");
             mnSalle();
-
         }
-
         mnSalle();
     }
 
     private static void updateSalle() {
 
-        Lieu[] salles = maBilletterie.getSalles();
+        Lieu[] salles = IHM.serviceBilleterie.getLieux().toArray(new Lieu[0]);
+
         String[] labels = new String[salles.length+1];
 
         for ( int i = 0 ; i < salles.length ; i++) {
@@ -100,7 +106,7 @@ public class MenuSalles {
 
     private static void rmSalle() {
 
-        Lieu[] salles = maBilletterie.getSalles();
+        Lieu[] salles = IHM.serviceBilleterie.getLieux().toArray(new Lieu[0]);
         String[] labels = new String[salles.length+1];
 
         for ( int i = 0 ; i < salles.length ; i++) {
@@ -115,12 +121,8 @@ public class MenuSalles {
             if (choix == labels.length) {
                 mnSalle();
             } else {
-               String key = salles[choix-1].getId();
-               try {
-                   maBilletterie.rmSalle(key);
-               } catch (ErrorLieu | ErrorEvent e) {
-                   IHM.consoleError("Suppression impossible" + e.getMessage());
-               }
+               int key = salles[choix-1].getId();
+                IHM.serviceBilleterie.deleteLieu(key);
                 mnSalle();
             }
         } else {

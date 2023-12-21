@@ -37,7 +37,7 @@ public class DDBBilletterie {
 
     public void addSalle(String nom, String adresse, int capacite) {
         String key = "salle-" + ++cptSalle;
-        Lieu newLieu = new Lieu(key,nom,adresse,capacite);
+        Lieu newLieu = new Lieu(0,nom,adresse,capacite);
         mesSalles.put(key,newLieu);
     }
 
@@ -131,12 +131,12 @@ public class DDBBilletterie {
     // ****************** Clients ************************
 
     public void addClient(String lastname, String firstname, String email) throws KnowMail {
-        if (mesClients.containsKey(email)) {
-            throw new KnowMail("address mail déjà connue");
-        } else {
-            Client newClient = new Client(lastname.toUpperCase(), firstname, email);
-            mesClients.put(email,newClient);
-        }
+//        if (mesClients.containsKey(email)) {
+//            throw new KnowMail("address mail déjà connue");
+//        } else {
+//            Client newClient = new Client(lastname.toUpperCase(), firstname, email);
+//            mesClients.put(email,newClient);
+//        }
     }
 
     public Client getClient(String mail) {

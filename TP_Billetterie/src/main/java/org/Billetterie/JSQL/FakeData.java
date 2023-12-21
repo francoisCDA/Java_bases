@@ -1,5 +1,6 @@
 package org.Billetterie.JSQL;
 
+import org.Billetterie.Display.IHM;
 import org.Billetterie.JSQL.Exceptions.KnowMail;
 
 import java.time.LocalDate;
@@ -31,6 +32,23 @@ public class FakeData {
 
     private static String mkCourriel(int i) {
         return firstnames[i]+"."+lastnames[i]+"@fmail.org";
+    }
+
+
+
+    public static void initSQL() {
+
+        Random rand = new Random();
+
+        for (int i = 0 ; i < nomsSalle.length ; i++) {
+            IHM.serviceBilleterie.addNewLieu(nomsSalle[i],mkAdress(i),rand.nextInt(200)+100);
+        }
+
+        for ( int i = 0 ; i < lastnames.length ; i++ ) {
+            IHM.serviceBilleterie.addNewClient(lastnames[i], firstnames[i], mkCourriel(i));
+        }
+
+
     }
 
 
