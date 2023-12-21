@@ -37,7 +37,7 @@ public class Client {
         return billets.toArray(new Billet[0]);
     }
 
-    public void achetteBillet(Billet[] billets) {
+    public void achetteBillet(Billet ...billets) {
         this.billets.addAll(Arrays.asList(billets));
     }
 

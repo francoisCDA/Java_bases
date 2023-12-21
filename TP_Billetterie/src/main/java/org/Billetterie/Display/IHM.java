@@ -33,7 +33,6 @@ public class IHM {
         Home.mainMenu();
     }
 
-
     private static void menuClient() {
         System.out.println("à implémenter");
         start();
@@ -55,7 +54,6 @@ public class IHM {
         }
 
         try {
-
             int ret = inputNumber("\n\n\t");
 
             if (ret < 1 || ret > menu.length) {
@@ -112,18 +110,17 @@ public class IHM {
     }
 
     public static boolean isCourrielFormat(String mail) {
-        // on va pas se mentir, merci chatGPT
+
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         Pattern courrielPattern = Pattern.compile(regex);
         Matcher matcher = courrielPattern.matcher(mail);
 
         return matcher.matches();
-
     }
 
     public static boolean isNoNumberChain(String nom) {
-        // on va pas se mentir, merci chatGPT
+
         String regex = "^[^0-9]*$";
 
         Pattern monPattern = Pattern.compile(regex);
