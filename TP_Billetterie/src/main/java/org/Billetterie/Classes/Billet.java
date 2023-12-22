@@ -1,19 +1,23 @@
 package org.Billetterie.Classes;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Data
+@AllArgsConstructor
 public class Billet {
 
-    private final String numero;
+    private final int id;
+
     private Event event;
-    public Billet(Event event,String numero) {
-        this.numero = numero;
-        this.event = event;
-    }
+
+    private Client client;
 
     public String toString() {
-        return "numéro : " + numero + ", " + event.toString();
+        return "numéro : " + id + ", " + event.toString();
     }
 
 }

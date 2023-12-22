@@ -36,6 +36,25 @@ public class LieuDAO extends BaseDAO<Lieu>{
         }
     }
 
+    public Lieu get(int id){
+
+        request = "SELECT * FROM lieu WHERE id_lieu = ? ";
+        try {
+            statement = _connection.prepareStatement(request);
+            statement.setInt(1,id);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()){
+                return new Lieu(resultSet.getInt("id_lieu"),resultSet.getString("nom"),resultSet.getString("adresse"), resultSet.getInt("capacite"));
+            }
+
+        } catch (SQLException e) {
+            IHM.consoleError(e.getMessage());
+        }
+        return null;
+    }
+
+
     public boolean addNew(String nom, String adresse, int capacite) {
         request = "INSERT INTO lieu (nom,adresse,capacite) VALUES (?,?,?)";
         try {

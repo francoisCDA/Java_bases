@@ -9,6 +9,9 @@ import org.Billetterie.JSQL.DDBBilletterie;
 import org.Billetterie.JSQL.FakeData;
 import org.Billetterie.JSQL.MaBilletterie;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,24 +24,26 @@ public class IHM {
 
     private static DDBBilletterie maBilletterie = MaBilletterie.getBilletterie();
 
-    public static ServicesBilleterie serviceBilleterie = new ServicesBilleterie() ;
+    public static ServicesBilleterie serviceBilleterie ;
 
-    public static void initBilleterie() {
-
-        FakeData.initBilleterie(maBilletterie);
-        System.out.println(maBilletterie);
-        System.out.println("\n\t *** Billetterie initialisée ***");
-    }
+//    public static void initBilleterie() {
+//
+//        FakeData.initBilleterie(maBilletterie);
+//        System.out.println(maBilletterie);
+//        System.out.println("\n\t *** Billetterie initialisée ***");
+//    }
 
     public static void start() {
 
-        H1("bienvenue");
+        serviceBilleterie = ServicesBilleterie.get();
 
-        String[] init = new String[]{"initialiser la BDD", "continer"};
+        String[] init = new String[]{"Initialiser la BDD", "Continuer"};
 
         int choix = menuBilleterie(init);
 
         if (choix == 1 ) FakeData.initSQL();
+
+        H1("bienvenue");
 
         Home.mainMenu();
     }
@@ -103,6 +108,78 @@ public class IHM {
         return retour;
     }
 
+    public static LocalDate inputDate(String label) {
+
+        boolean valide = false;
+        String input;
+        LocalDate ret = null;
+
+        while (!valide) {
+
+            input = inputText(label);
+
+            try {
+                ret = LocalDate.parse(input);
+
+                valide = true;
+
+            } catch ( DateTimeParseException e) {
+                IHM.consoleError(e.getMessage());
+            }
+
+        }
+
+        return ret;
+
+    }
+
+    public static LocalTime inputTime(String label) {
+
+        boolean valide = false;
+        String input;
+        LocalTime ret = null;
+
+        while (!valide) {
+
+            input = inputText(label);
+
+            try {
+                ret = LocalTime.parse(input);
+
+                valide = true;
+
+            } catch ( DateTimeParseException e) {
+                IHM.consoleError(e.getMessage());
+            }
+
+        }
+        return ret;
+    }
+
+    public static Double inputPrix(String label) {
+
+        boolean valide = false;
+        String input;
+        Double ret = null;
+
+        while (!valide) {
+
+            input = inputText(label);
+
+            try {
+                ret = Double.parseDouble(input);
+                valide = true;
+
+            } catch ( NumberFormatException | NullPointerException e) {
+                IHM.consoleError(e.getMessage());
+            }
+        }
+
+        return ret;
+    }
+
+
+
     public static void consoleError(String error) {
         System.out.printf("\n\n !!! %s !!!\n",error.toUpperCase());
     }
@@ -118,6 +195,7 @@ public class IHM {
     public static void consoleLi(String li) {
         System.out.printf("\t - %s\n",li);
     }
+
 
     public static boolean isCourrielFormat(String mail) {
 

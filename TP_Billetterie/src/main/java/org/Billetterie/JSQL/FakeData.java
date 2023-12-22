@@ -48,33 +48,45 @@ public class FakeData {
             IHM.serviceBilleterie.addNewClient(lastnames[i], firstnames[i], mkCourriel(i));
         }
 
-
-    }
-
-
-    public static void initBilleterie(DDBBilletterie billetterie) {
-
-        Random rand = new Random();
-
-        for (int i = 0 ; i < nomsSalle.length ; i++) {
-            billetterie.addSalle(nomsSalle[i],mkAdress(i), rand.nextInt(200)+100);
-        }
-
-        for ( int i = 0 ; i < lastnames.length ; i++ ) {
-            try {
-                billetterie.addClient(lastnames[i], firstnames[i], mkCourriel(i));
-            }  catch (KnowMail e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
         LocalDate hui = LocalDate.now();
 
         for (int i = 0 ; i < eventName.length ; i++) {
-            billetterie.addEvent(eventName[i],hui.plusDays(rand.nextInt(30)-10), LocalTime.of(rand.nextInt(9)+12,0),billetterie.randLieu(), rand.nextInt(50)+10);
+
+            String nom = eventName[i];
+            LocalDate date = hui.plusDays(rand.nextInt(30)-10);
+            LocalTime time = LocalTime.of(rand.nextInt(9)+12,0,0) ;
+            int idSalle = rand.nextInt(9)+1; ;
+            Double prix = rand.nextDouble(100)+50;
+
+            IHM.serviceBilleterie.addNewEvent(nom ,date, time,idSalle,prix);
         }
 
     }
+
+//
+//    public static void initBilleterie(DDBBilletterie billetterie) {
+//
+//        Random rand = new Random();
+//
+//        for (int i = 0 ; i < nomsSalle.length ; i++) {
+//            billetterie.addSalle(nomsSalle[i],mkAdress(i), rand.nextInt(200)+100);
+//        }
+//
+//        for ( int i = 0 ; i < lastnames.length ; i++ ) {
+//            try {
+//                billetterie.addClient(lastnames[i], firstnames[i], mkCourriel(i));
+//            }  catch (KnowMail e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
+//
+//        LocalDate hui = LocalDate.now();
+//
+//        for (int i = 0 ; i < eventName.length ; i++) {
+//            billetterie.addEvent(eventName[i],hui.plusDays(rand.nextInt(30)-10), LocalTime.of(rand.nextInt(9)+12,0),billetterie.randLieu(), rand.nextInt(50)+10);
+//        }
+//
+//    }
 
 
 

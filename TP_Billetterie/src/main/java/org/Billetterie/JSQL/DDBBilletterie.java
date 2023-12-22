@@ -82,17 +82,17 @@ public class DDBBilletterie {
         return mesEvenements.values().toArray(new Event[0]) ;
     }
 
-    public void addEvent(String nom, LocalDate date, LocalTime heure, Lieu salle, int prix) {
-        String key = "event-" + nom + "-" + date + "-" + ++cptEvent;
-        Event newEvent = new Event(key,nom,date,heure,salle,prix);
-        mesEvenements.put(key,newEvent);
-    }
+//    public void addEvent(String nom, LocalDate date, LocalTime heure, Lieu salle, int prix) {
+//        String key = "event-" + nom + "-" + date + "-" + ++cptEvent;
+//        Event newEvent = new Event(key,nom,date,heure,salle,prix);
+//        mesEvenements.put(key,newEvent);
+//    }
 
-    public void cancelEvent(String key) throws ErrorEvent {
-        if (!mesEvenements.containsKey(key)) throw new ErrorEvent("Evènement inconnu");
-        canceledEvent.put(key,mesEvenements.get(key));
-        mesEvenements.remove(key);
-    }
+//    public void cancelEvent(String key) throws ErrorEvent {
+//        if (!mesEvenements.containsKey(key)) throw new ErrorEvent("Evènement inconnu");
+//        canceledEvent.put(key,mesEvenements.get(key));
+//        mesEvenements.remove(key);
+//    }
 
     public void rmEvent(String key) throws ErrorEvent {
         if (mesEvenements.containsKey(key)) throw new ErrorEvent("Evènement non annulé, suppression impossible");

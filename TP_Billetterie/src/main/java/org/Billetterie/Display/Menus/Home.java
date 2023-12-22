@@ -7,17 +7,25 @@ public class Home {
     public static void mainMenu() {
 
         Integer choix;
-        String[] mainMenu = {"Gestion des lieux", "Gestion des évènements", "Gestion des clients", "Quitter l'application"};
+        boolean run = true;
 
-        choix = IHM.menuBilleterie(mainMenu, "Menu principal");
+        while (run){
 
-        switch (choix) {
-            case 1 -> MenuSalles.mnSalle();
-            case 2 -> MenuEvent.mvEvent();
-            case 3 -> MenuClient.mnClients();
-            case 4 -> confirmeQuit();
-            default -> mainMenu();
+            String[] mainMenu = {"Gestion des lieux", "Gestion des évènements", "Gestion des clients", "Quitter l'application"};
+
+            choix = IHM.menuBilleterie(mainMenu, "Menu principal");
+
+            switch (choix) {
+                case 1 -> MenuSalles.mnSalle();
+                case 2 -> MenuEvent.mnEvent();
+                case 3 -> MenuClient.mnClients();
+                case 4 -> run = false;
+                //default -> mainMenu();
+            }
+
         }
+
+        confirmeQuit();
 
     }
 

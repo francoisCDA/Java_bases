@@ -16,18 +16,22 @@ public class MenuClient {
 
     public static void mnClients() {
 
-        int choix;
-        String[] menuCLient = {"Rechercher un client ->", "Ajouter un client", "- RETOUR -" };
+        int choix = 0;
+        while (choix != 3) {
 
-        choix = IHM.menuBilleterie(menuCLient,"Gestion Client");
+            String[] menuCLient = {"Rechercher un client ->", "Ajouter un client", "- RETOUR -" };
 
-        switch (choix) {
-            case 1 -> mnClient();
-            case 2 -> addClient();
-            case 3 -> Home.mainMenu();
+            choix = IHM.menuBilleterie(menuCLient,"Gestion Client");
 
-            default -> mnClients();
+            switch (choix) {
+                case 1 -> mnClient();
+                case 2 -> addClient();
+                //case 3 -> Home.mainMenu();
+
+                //default -> mnClients();
+            }
         }
+
     }
 
     public static void mnClient() {
@@ -124,9 +128,8 @@ public class MenuClient {
 
         if (!last.isEmpty() && !first.isEmpty() && IHM.isNoNumberChain(last+first) && IHM.isCourrielFormat(mail)) {
 
-            Client client = IHM.serviceBilleterie.addNewClient(last,first,mail);
-            if ( client != null) {
-                IHM.consoleConfirm("Client créé : " + client.toString() );
+           if ( IHM.serviceBilleterie.addNewClient(last,first,mail)) {
+                IHM.consoleConfirm("Client créé : ");
             } else {
                 IHM.consoleFail("Problème à la création du client");
             }

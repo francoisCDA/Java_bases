@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ClientDAO extends BaseDAO<Client> {
+
+
     @Override
     public ArrayList<Client> get() {
         ArrayList<Client> ret = new ArrayList<>();
@@ -30,7 +32,7 @@ public class ClientDAO extends BaseDAO<Client> {
         }
     }
 
-    public Client addNew(String last, String first, String email) {
+    public Boolean addNew(String last, String first, String email) {
         request = "INSERT INTO client (first,last,email) VALUES (?,?,?)";
         try {
             statement = _connection.prepareStatement(request);
@@ -38,16 +40,15 @@ public class ClientDAO extends BaseDAO<Client> {
             statement.setString(2,last);
             statement.setString(3,email);
 
-            resultSet = statement.executeQuery();
+            int rows = statement.executeUpdate();
 
-            if (resultSet.next()){
-                return new Client(resultSet.getInt("ic_client"),resultSet.getString("last"),resultSet.getString("first"),resultSet.getString("email"));
-            }
+            return rows == 1;
 
         } catch (SQLException e) {
             IHM.consoleError(e.getMessage());
+            return false;
         }
-        return null;
+
     }
 
     @Override

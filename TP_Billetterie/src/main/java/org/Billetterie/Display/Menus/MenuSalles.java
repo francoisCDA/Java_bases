@@ -27,7 +27,9 @@ public class MenuSalles {
             case 2 -> addSalle();
             case 3 -> updateSalle();
             case 4 -> rmSalle();
-            case 5 -> Home.mainMenu();
+            case 5 -> {
+                return;
+            }
 
             default -> mnSalle();
         }
